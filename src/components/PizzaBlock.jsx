@@ -1,28 +1,45 @@
-//
-function PizzaBlock({ title, price }) {
-  console.log(title, price);
+import React from 'react';
+
+function PizzaBlock({ imageUrl, title, types, price, sizes }) {
+  const [activeDough, setActiveDough] = React.useState(0);
+  const [activeSize, setActiveSize] = React.useState(0);
+  const typeNameOfTest = ['тонкое', 'традиционное'];
+
   return (
     <div className='pizza-block'>
-      <img
-        className='pizza-block__image'
-        src='https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg'
-        alt='Pizza'
-      />
+      <img className='pizza-block__image' src={imageUrl} alt='Pizza' />
       <h4 className='pizza-block__title'>{title}</h4>
       <div className='pizza-block__selector'>
         <ul>
-          <li className='active'>тонкое</li>
-          <li>традиционное</li>
+          {types.map((item, index) => {
+            return (
+              <li
+                key={index}
+                onClick={() => setActiveDough(index)}
+                className={activeDough === index ? 'active' : ''}
+              >
+                {typeNameOfTest[item]}
+              </li>
+            );
+          })}
         </ul>
         <ul>
-          <li className='active'>26 см.</li>
-          <li>30 см.</li>
-          <li>40 см.</li>
+          {sizes.map((size, index) => {
+            return (
+              <li
+                key={index}
+                onClick={() => setActiveSize(index)}
+                className={activeSize === index ? 'active' : ''}
+              >
+                {size} см.
+              </li>
+            );
+          })}
         </ul>
       </div>
       <div className='pizza-block__bottom'>
         <div className='pizza-block__price'>от {price} ₽</div>
-        <div className='button button--outline button--add'>
+        <button className='button button--outline button--add'>
           <svg
             width='12'
             height='12'
@@ -36,8 +53,8 @@ function PizzaBlock({ title, price }) {
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
-        </div>
+          <i>0</i>
+        </button>
       </div>
     </div>
   );
