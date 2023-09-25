@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 
 import Header from './components/Header';
@@ -5,10 +6,33 @@ import Categories from './components/Categories';
 import Sort from './components/Sort';
 import PizzaBlock from './components/PizzaBlock';
 
-import pizzasItem from './assets/pizzas.json';
-
 function App() {
-  console.log(pizzasItem);
+  const [pizzasItem, setPizzasItem] = React.useState([]);
+
+  /*
+  Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !!!
+  Подробнее:
+  Когда компонент первоначально монтируется, `useEffect()` запускает асинхронный вызов `fetch()'
+  чтобы получить данные о пиццах из базы данных Firebase.
+  Этот эффект будет запущен только один раз, 
+  так как зависимостей нет.
+  */
+  React.useEffect(() => {
+    fetch('https://mommegan-c835e-default-rtdb.firebaseio.com/PizzaData.json')
+      // преобразуем полученный ответа `response` в формате JSON
+      .then((response) => response.json())
+      .then((arr) => {
+        // вызываем функцию `setPizzasItem(arr)` и устанавливаем значение `arr` в состояние компонента
+        setPizzasItem(arr);
+        // смотрим что получилось
+        // console.log(pizzasItem);
+      })
+      // ловим ошибки, возникающие при выполнении fetch-запроса
+      .catch((err) => {
+        console.log(err, 'err');
+      });
+  }, []);
+
   return (
     <div className='wrapper'>
       {/* Заголовок */}
@@ -25,10 +49,7 @@ function App() {
           <div className='content__items'>
             {/* Пицца-блок */}
             {pizzasItem.map((obj) => {
-              return (
-              <PizzaBlock {...obj}
-              />
-              );
+              return <PizzaBlock key={obj.id} {...obj} />;
             })}
           </div>
         </div>
