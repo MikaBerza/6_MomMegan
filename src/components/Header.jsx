@@ -1,4 +1,5 @@
 //
+import React from 'react';
 import pizzaLogo from '../assets/img/pizza-logo.svg';
 
 function Header() {
