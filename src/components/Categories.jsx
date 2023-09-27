@@ -1,21 +1,14 @@
 //
 import React from 'react';
+import { nameCategories } from '../assets/nameCategories.js';
 
 function Categories() {
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const categories = [
-    'Все',
-    'Мясные',
-    'Вегетарианская',
-    'Гриль',
-    'Острые',
-    'Закрытые',
-  ];
 
   return (
     <div className='categories'>
       <ul>
-        {categories.map((item, index) => {
+        {nameCategories.map((item, index) => {
           return (
             <li
               key={index}
