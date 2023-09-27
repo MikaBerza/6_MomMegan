@@ -14,16 +14,14 @@ function App() {
       {/* Заголовок */}
       <Header />
       <div className='content'>
-        <div className='container'>
-          {/* <Home /> */}
-          {/* <NotFound /> */}
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/cart' element={<Cart />} />
-            {/* Если ничего не нашлось, то отображаем страницу <NotFound /> */}
-            <Route path='*' element={<NotFound />} />
-          </Routes>
-        </div>
+        {/* <Home /> */}
+        {/* <NotFound /> */}
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/cart' element={<Cart />} />
+          {/* Если ничего не нашлось, то отображаем страницу <NotFound /> */}
+          <Route path='*' element={<NotFound />} />
+        </Routes>
       </div>
     </div>
   );

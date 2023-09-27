@@ -5,7 +5,9 @@ function NoteFoundBlock() {
   return (
     <div className={styles.wrapper}>
       <h1>
-        <span className={styles.emoji}>&#128579;</span>
+        <span className={styles.emoji} role='img' aria-label='Emoji'>
+          &#128579;
+        </span>
         <br />
         Ничего не найдено
       </h1>

@@ -36,10 +36,12 @@ function Home() {
         // после получения ошибки изменим флаг на true (чтобы появился скелетон пиц), т.к. изображения не будут загружены
         setIsLoading(true);
       });
+      // при переходе на страницу автоматический скролл вверх
+    window.scrollTo(0, 0);
   }, []);
 
   return (
-    <>
+    <div className='container'>
       <div className='content__top'>
         {/* Категории */}
         <Categories />
@@ -58,7 +60,7 @@ function Home() {
               return <PizzaBlock key={obj.id} {...obj} />;
             })}
       </div>
-    </>
+    </div>
   );
 }
 
