@@ -1,9 +1,9 @@
 import React from 'react';
 
-function PizzaBlock({ imageUrl, title, types, price, sizes }) {
+function MeganBlock({ imageUrl, title, types, price, sizes }) {
   const [activeDough, setActiveDough] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
-  const typeNameOfTest = ['тонкое', 'традиционное'];
+  const typeNameOfTest = ['летнии', 'осеннии', 'зимнии'];
 
   return (
     <div className='pizza-block'>
@@ -31,7 +31,7 @@ function PizzaBlock({ imageUrl, title, types, price, sizes }) {
                 onClick={() => setActiveSize(index)}
                 className={activeSize === index ? 'active' : ''}
               >
-                {size} см.
+                {size}
               </li>
             );
           })}
@@ -60,4 +60,4 @@ function PizzaBlock({ imageUrl, title, types, price, sizes }) {
   );
 }
 
-export default PizzaBlock;
+export default MeganBlock;

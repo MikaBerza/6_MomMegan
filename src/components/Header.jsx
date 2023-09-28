@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import pizzaLogo from '../assets/img/pizza-logo.svg';
+import mLogo from '../assets/img/M-logo.png';
 
 function Header() {
   return (
@@ -11,10 +11,10 @@ function Header() {
         {/* кликнув по лого переходим на главную страницу */}
         <Link to='/'>
           <div className='header__logo'>
-            <img width='38' src={pizzaLogo} alt='Pizza logo' />
+            <img width='38' src={mLogo} alt='Pizza logo' />
             <div>
-              <h1>React Pizza</h1>
-              <p>самая вкусная пицца</p>
+              <h1>Megan</h1>
+              <p>обувь говорит громче слов</p>
             </div>
           </div>
         </Link>

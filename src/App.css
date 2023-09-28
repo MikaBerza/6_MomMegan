@@ -121,7 +121,7 @@ a {
   min-width: 100px;
   padding: 10px 20px;
   text-align: center;
-  background-color: #fe5f1e;
+  background-color: #000000;
   border: 1px solid transparent;
   border-radius: 30px;
   -webkit-transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
@@ -184,20 +184,20 @@ a {
 
 .button_outline {
   background-color: #fff;
-  border-color: #fe5f1e
+  border-color: #000000
 }
 
 .button_outline,
 .button_outline span {
-  color: #fe5f1e
+  color: #000000
 }
 
 .button_outline svg path {
-  fill: #fe5f1e
+  fill: #000000
 }
 
 .button_outline:hover {
-  background-color: #fe5f1e
+  background-color: #000000
 }
 
 .button_outline:hover,
@@ -231,7 +231,7 @@ a {
 }
 
 .button_add:hover i {
-  color: #fe5f1e;
+  color: #000000;
   background-color: #fff;
 }
 
@@ -247,7 +247,7 @@ a {
   font-style: normal;
   line-height: 22px;
   color: #fff;
-  background-color: #fe5f1e;
+  background-color: #000000;
   border-radius: 30px;
 }
 
@@ -331,8 +331,8 @@ a {
 }
 
 .sort__label span {
-  color: #fe5f1e;
-  border-bottom: 1px dashed #fe5f1e;
+  color: #000000;
+  border-bottom: 1px dashed #000000;
   cursor: pointer
 }
 
@@ -365,7 +365,7 @@ a {
 
 .sort__popup ul li.active {
   font-weight: bold;
-  color: #fe5f1e
+  color: #000000
 }
 
 .pizza-block {
@@ -376,7 +376,7 @@ a {
 
 
 .pizza-block__image {
-  width: 260px;
+  width: 240px;
 }
 
 .pizza-block__title {
@@ -456,7 +456,7 @@ a {
 }
 
 body {
-  background-color: #ffdf8c
+  background-color: #f9f9f9
 }
 
 .wrapper {
@@ -743,7 +743,7 @@ body {
 }
 
 .cart__bottom-details span:last-of-type b {
-  color: #fe5f1e
+  color: #000000
 }
 
 .cart__bottom-buttons {

@@ -2,8 +2,8 @@ import React from 'react';
 //
 import Categories from '../Categories';
 import Sort from '../Sort';
-import PizzaBlock from '../folderPizzaBlock/PizzaBlock';
-import PizzaBlockSkeleton from '../folderPizzaBlock/PizzaBlockSkeleton';
+import MeganBlock from '../folderMeganBlock/MeganBlock';
+import MeganBlockSkeleton from '../folderMeganBlock/MeganBlockSkeleton';
 
 import { getFilteredArrayByCategory } from '../../modules/modules';
 import { listOfCategoryItemNames } from '../../assets/listsWithNames';
@@ -14,7 +14,7 @@ function Home() {
   const [pizzaProductData, setPizzaProductData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   // создадим массив для отображения скелетона пиц (он будет заполнен 10шт undefined)
-  const arrayForSkeleton = [...new Array(10)];
+  const arrayForSkeleton = [...new Array(15)];
   // console.log(categoryId, 'categoryId');
   console.log(sortId, 'sortId');
 
@@ -35,7 +35,7 @@ function Home() {
   так как зависимостей нет.
   */
   React.useEffect(() => {
-    fetch('https://mommegan-c835e-default-rtdb.firebaseio.com/PizzaData.json')
+    fetch('https://mommegan-c835e-default-rtdb.firebaseio.com/shoesData.json')
       // преобразуем полученный ответа `response` в формате JSON
       .then((response) => response.json())
       // принимаем преобразованный объект JavaScript в качестве аргумента `productData`.
@@ -77,13 +77,13 @@ function Home() {
       <h2 className='content__title'>Все пиццы</h2>
       <div className='content__items'>
         {/* Пицца-блок */}
-        {/* если  isLoading === true отображаем PizzaBlockSkeleton, а если false отображаем PizzaBlock*/}
+        {/* если  isLoading === true отображаем MeganBlockSkeleton, а если false отображаем MeganBlock*/}
         {isLoading
           ? arrayForSkeleton.map((item, index) => {
-              return <PizzaBlockSkeleton key={index} />;
+              return <MeganBlockSkeleton key={index} />;
             })
           : arrNewDataProduct.map((obj) => {
-              return <PizzaBlock key={obj.id} {...obj} />;
+              return <MeganBlock key={obj.id} {...obj} />;
             })}
       </div>
     </div>

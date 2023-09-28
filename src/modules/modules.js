@@ -34,7 +34,7 @@ export function getSortedArrayBy(productData, sortingNumber) {
     sortFunction = (a, b) => a['price'] - b['price'];
   } else if (sortingNumber === rating) {
     // Для сортировки по числовым свойствам (rating)
-    sortFunction = (a, b) => a['rating'] - b['rating'];
+    sortFunction = (a, b) => b['rating'] - a['rating'];
   }
   // Сортируем и возвращаем отсортированный массив
   return copyDataArray.sort(sortFunction);
