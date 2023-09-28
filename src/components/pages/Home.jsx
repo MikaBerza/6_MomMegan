@@ -4,6 +4,9 @@ import Categories from '../Categories';
 import Sort from '../Sort';
 import PizzaBlock from '../folderPizzaBlock/PizzaBlock';
 import PizzaBlockSkeleton from '../folderPizzaBlock/PizzaBlockSkeleton';
+
+import { getFilteredArrayByCategory } from '../../modules/modules';
+
 import { nameCategories } from '../../assets/nameCategories';
 
 function Home() {
@@ -13,53 +16,11 @@ function Home() {
   const arrayForSkeleton = [...new Array(10)];
 
   /*______________________________________________________________________________________________*/
-  // функция, получить отсортированный массив по (алфавиту(title), цене(price), популярности(rating))
-  function getSortedArrayBy(productData, sortingName) {
-    // Создаем копию исходного массива
-    const copyDataArray = [...productData];
-    // Выбираем метод сортировки в зависимости от sortingName
-    let sortFunction;
-    if (sortingName === 'title') {
-      // Для правильной сортировки слов по русскому алфавиту используем метод localeCompare()
-      sortFunction = (a, b) => a[sortingName].localeCompare(b[sortingName], 'ru');
-    } else {
-      // Для сортировки по числовым свойствам (price и rating)
-      sortFunction = (a, b) => a[sortingName] - b[sortingName];
-    }
-    // Сортируем и возвращаем отсортированный массив
-    return copyDataArray.sort(sortFunction);
-  }
-
-  // функция, получить отфильтрованный массив по (категориям(category))
-  function getFilteredArrayByCategory(productData, sortingName, categoryNumber) {
-    // допустимые свойства сортировки запишем в константу
-    const validSortProperties = ['title', 'price', 'rating'];
-    // Проверяем, является ли sortingName допустимым свойством для сортировки
-    if (!validSortProperties.includes(sortingName)) {
-      return 'Указан неверный параметр функции!!! (Invalid function parameter specified)';
-    }
-
-    // Отсортировать массив по заданному свойству (sortingName)
-    const sortedArray = getSortedArrayBy(productData, sortingName);
-    // Фильтровать отсортированный массив по категории (categoryNumber)
-    const filteredArray = sortedArray.filter(
-      (item) => item.category === categoryNumber
-    );
-    // сделаем проверку
-    if (filteredArray.length === 0) {
-      // вернем null если отфильтрованный по категориям массив пуст
-      return null;
-    } else {
-      // вернем отфильтрованный по категориям массив
-      return filteredArray;
-    }
-  }
-  // Проверим функцию
-  console.log(
-    getFilteredArrayByCategory(pizzaProductData, 'rating', 0),
-    'getFilteredArrayByCategory'
-  );
-  console.log(pizzaProductData, 'pizzaProductData');
+  // Проверим работу импортируемой функции
+  // console.log(
+  //   getFilteredArrayByCategory(pizzaProductData, 'price', 2),
+  //   'getFilteredArrayByCategory'
+  // );
   /*______________________________________________________________________________________________*/
 
   /*
