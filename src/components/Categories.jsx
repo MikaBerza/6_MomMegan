@@ -1,21 +1,18 @@
 //
 import React from 'react';
-import { nameCategories } from '../assets/nameCategories.js';
 
-function Categories() {
-  const [activeIndex, setActiveIndex] = React.useState(0);
-
+function Categories({ value, listOfCategoryItemNames, onClickCategories }) {
   return (
     <div className='categories'>
       <ul>
-        {nameCategories.map((item, index) => {
+        {listOfCategoryItemNames.map((nameItem, index) => {
           return (
             <li
               key={index}
-              onClick={() => setActiveIndex(index)}
-              className={activeIndex === index ? 'active' : ''}
+              onClick={() => onClickCategories(index)}
+              className={value === index ? 'active' : ''}
             >
-              {item}
+              {nameItem}
             </li>
           );
         })}

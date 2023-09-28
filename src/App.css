@@ -369,7 +369,7 @@ a {
 }
 
 .pizza-block {
-  width: 280px;
+  width: 300px;
   margin-bottom: 65px;
   text-align: center;
 }
@@ -856,7 +856,7 @@ body {
   }
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1130px) {
   .content__items {
     grid-template-columns: repeat(2, 1fr);
   }

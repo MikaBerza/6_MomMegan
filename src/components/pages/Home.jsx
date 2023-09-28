@@ -6,19 +6,22 @@ import PizzaBlock from '../folderPizzaBlock/PizzaBlock';
 import PizzaBlockSkeleton from '../folderPizzaBlock/PizzaBlockSkeleton';
 
 import { getFilteredArrayByCategory } from '../../modules/modules';
-
-import { nameCategories } from '../../assets/nameCategories';
+import { listOfCategoryItemNames } from '../../assets/listsWithNames';
 
 function Home() {
+  const [categoryId, setCategoryId] = React.useState(0);
+  const [sortId, setSortId] = React.useState(0);
   const [pizzaProductData, setPizzaProductData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  // создадим массив для отображения скелетона пиц
+  // создадим массив для отображения скелетона пиц (он будет заполнен 10шт undefined)
   const arrayForSkeleton = [...new Array(10)];
+  // console.log(categoryId, 'categoryId');
+  console.log(sortId, 'sortId');
 
   /*______________________________________________________________________________________________*/
   // Проверим работу импортируемой функции
   // console.log(
-  //   getFilteredArrayByCategory(pizzaProductData, 'price', 2),
+  //   getFilteredArrayByCategory(pizzaProductData, 1, 2),
   //   'getFilteredArrayByCategory'
   // );
   /*______________________________________________________________________________________________*/
@@ -51,13 +54,25 @@ function Home() {
     window.scrollTo(0, 0);
   }, []);
 
+  const arrNewDataProduct = getFilteredArrayByCategory(
+    pizzaProductData,
+    sortId,
+    categoryId
+  );
+
+  // console.log(arrNewDataProduct);
+
   return (
     <div className='container'>
       <div className='content__top'>
         {/* Категории */}
-        <Categories />
+        <Categories
+          value={categoryId}
+          onClickCategories={setCategoryId}
+          listOfCategoryItemNames={listOfCategoryItemNames}
+        />
         {/* Сортировка */}
-        <Sort />
+        <Sort sortId={sortId} setSortId={setSortId} />
       </div>
       <h2 className='content__title'>Все пиццы</h2>
       <div className='content__items'>
@@ -67,7 +82,7 @@ function Home() {
           ? arrayForSkeleton.map((item, index) => {
               return <PizzaBlockSkeleton key={index} />;
             })
-          : pizzaProductData.map((obj) => {
+          : arrNewDataProduct.map((obj) => {
               return <PizzaBlock key={obj.id} {...obj} />;
             })}
       </div>

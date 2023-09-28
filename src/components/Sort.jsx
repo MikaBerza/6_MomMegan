@@ -1,13 +1,12 @@
 import React from 'react';
+import { listOfNamesOfSortingElements } from '../assets/listsWithNames';
 
-function Sort() {
+function Sort({ sortId, setSortId }) {
   const [open, setOpen] = React.useState(false);
-  const list = ['популярности', 'цене', 'алфавиту'];
-  const [selected, setSelected] = React.useState(0);
-  const searchItemName = list[selected];
+  const searchItemName = listOfNamesOfSortingElements[sortId];
 
   const onClickSelectAnItem = (index) => {
-    setSelected(index);
+    setSortId(index);
     setOpen(false);
   };
 
@@ -38,14 +37,14 @@ function Sort() {
       {open && (
         <div className='sort__popup'>
           <ul>
-            {list.map((item, index) => {
+            {listOfNamesOfSortingElements.map((item, index) => {
               return (
                 <li
                   key={index}
                   onClick={() => {
                     onClickSelectAnItem(index);
                   }}
-                  className={selected === index ? 'active' : ''}
+                  className={sortId === index ? 'active' : ''}
                 >
                   {item}
                 </li>
