@@ -1,6 +1,6 @@
 import {
   listOfNamesOfSortingElements,
-  listOfCategoryItemNames,
+  listOfFilteringItemNames,
 } from '../assets/listsWithNames';
 
 // Бок с функциями для сортировки и фильтрации
@@ -41,7 +41,7 @@ export function getSortedArrayBy(productData, sortingNumber) {
 }
 
 // функция, получить отфильтрованный массив по (категориям(category))
-export function getFilteredArrayByCategory(
+export function getFilteredArrayByFiltering(
   productData,
   sortingNumber,
   categoryNumber
@@ -52,7 +52,7 @@ export function getFilteredArrayByCategory(
   );
   // допустимые свойства фильтрации запишем в константу
   const validFilterProperties = convertAnArrayOfElementsToAnArrayWithIndexes(
-    listOfCategoryItemNames
+    listOfFilteringItemNames
   );
   // Проверяем, является ли sortingNumber и categoryNumber допустимым свойством для сортировки
   if (!validSortProperties.includes(sortingNumber)) {

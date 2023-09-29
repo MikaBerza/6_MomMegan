@@ -1,7 +1,6 @@
 import React from 'react';
-import { listOfNamesOfSortingElements } from '../assets/listsWithNames';
 
-function Sort({ sortId, setSortId }) {
+function Sort({ sortId, setSortId, listOfNamesOfSortingElements }) {
   const [open, setOpen] = React.useState(false);
   const searchItemName = listOfNamesOfSortingElements[sortId];
 

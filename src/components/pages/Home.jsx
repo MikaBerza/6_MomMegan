@@ -1,28 +1,24 @@
 import React from 'react';
-//
-import Categories from '../Categories';
-import Sort from '../Sort';
-import ProductBlock from '../folderProductBlock/ProductBlock';
-import ProductBlockSkeleton from '../folderProductBlock/ProductBlockSkeleton';
 
-import { getFilteredArrayByCategory } from '../../modules/modules';
-import { listOfCategoryItemNames } from '../../assets/listsWithNames';
+import SortfiltrationBlock from '../folderSortingFiltering/SortfiltrationBlock';
+import ProductCardBlock from '../folderProductCardBlock/ProductCardBlock';
+import ProductCardBlockSkeleton from '../folderProductCardBlock/ProductCardBlockSkeleton';
+
+import { getFilteredArrayByFiltering } from '../../modules/modules';
 
 function Home() {
-  const [categoryId, setCategoryId] = React.useState(0);
+  const [filteringId, setFilteringId] = React.useState(0);
   const [sortId, setSortId] = React.useState(0);
-  const [pizzaProductData, setPizzaProductData] = React.useState([]);
+  const [productData, setPizzaProductData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   // создадим массив для отображения скелетона пиц (он будет заполнен 10шт undefined)
   const arrayForSkeleton = [...new Array(15)];
-  // console.log(categoryId, 'categoryId');
-  console.log(sortId, 'sortId');
 
   /*______________________________________________________________________________________________*/
   // Проверим работу импортируемой функции
   // console.log(
-  //   getFilteredArrayByCategory(pizzaProductData, 1, 2),
-  //   'getFilteredArrayByCategory'
+  //   getFilteredArrayByFiltering(productData, 1, 2),
+  //   'getFilteredArrayByFiltering'
   // );
   /*______________________________________________________________________________________________*/
 
@@ -54,40 +50,50 @@ function Home() {
     window.scrollTo(0, 0);
   }, []);
 
-  const arrNewDataProduct = getFilteredArrayByCategory(
-    pizzaProductData,
+  // присваиваем вернувшийся массив из функции в константу
+  const arrNewDataProduct = getFilteredArrayByFiltering(
+    productData,
     sortId,
-    categoryId
+    filteringId
   );
-
   // console.log(arrNewDataProduct);
 
   return (
-    <div className=''>
-      <div className='content__top'>
-        {/* Категории */}
-        <Categories
-          value={categoryId}
-          onClickCategories={setCategoryId}
-          listOfCategoryItemNames={listOfCategoryItemNames}
-        />
-        {/* Сортировка */}
-        <Sort sortId={sortId} setSortId={setSortId} />
-      </div>
-      <h2 className='content__title'>Товары</h2>
-      <div className='content__items'>
-        {/* Пицца-блок */}
-        {/* если  isLoading === true отображаем ProductBlockSkeleton, а если false отображаем ProductBlock*/}
+    <>
+      {/* Сортировка и Фильтрация Блок */}
+      <SortfiltrationBlock
+        filteringId={filteringId}
+        setFilteringId={setFilteringId}
+        sortId={sortId}
+        setSortId={setSortId}
+      />
+      <section className='main-title'>
+        <h1 className='main-title__item'>Товары</h1>
+      </section>
+
+      <section className='card-wrap'>
+        {/* Продукт-Блок */}
         {isLoading
           ? arrayForSkeleton.map((item, index) => {
-              return <ProductBlockSkeleton key={index} />;
+              return <ProductCardBlockSkeleton key={index} />;
             })
           : arrNewDataProduct.map((obj) => {
-              return <ProductBlock key={obj.id} {...obj} />;
+              return <ProductCardBlock key={obj.id} {...obj} />;
             })}
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
 
 export default Home;
+
+{
+  /* <div class='card-wrap'>
+  <div class='product-card'>
+    <img class='product-card__image' />
+    <h4 class='product-card__title'></h4>
+    <div class='product-card__selector'></div>
+    <div class='product-card__button'></div>
+  </div>
+</div>; */
+}

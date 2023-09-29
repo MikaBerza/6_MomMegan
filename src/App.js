@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/HeaderBlock/Header';
+import Header from './components/folderHeaderBlock/Header';
 import Home from './components/pages/Home';
 import Cart from './components/pages/Cart';
 import NotFound from './components/pages/NotFound';
@@ -13,15 +13,15 @@ function App() {
     <div className='wrapper'>
       {/* Заголовок */}
       <Header />
-      <div className='content'>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/cart' element={<Cart />} />
-          {/* Если ничего не нашлось, то отображаем страницу <NotFound /> */}
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-      </div>
+      {/* <div className='content'> */}
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/cart' element={<Cart />} />
+        {/* Если ничего не нашлось, то отображаем страницу <NotFound /> */}
+        <Route path='*' element={<NotFound />} />
+      </Routes>
     </div>
+    // </div>
   );
 }
 

@@ -1,36 +1,44 @@
 import React from 'react';
-import styles from './ProductBlock.module.css';
+import styles from './ProductCardBlock.module.css';
 import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 
-function ProductBlock({ imageUrl, title, types, price, sizes }) {
+function ProductCardBlock({ imageUrl, title, types, price, sizes }) {
   const [activeDough, setActiveDough] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
 
   return (
-    <div className='product-block'>
-      <img className='product-block__image' src={imageUrl} alt='Pizza' />
-      <h4 className='product-block__title'>{title}</h4>
-      <div className='product-block__selector'>
-        <ul>
+    <div className={styles['product-card']}>
+      <img
+        className={styles['product-card__image']}
+        src={imageUrl}
+        alt='image'
+      />
+      <h4 className={styles['product-card__title']}>{title}</h4>
+      <div className={styles['product-card__selector']}>
+        <ul className={styles['product-card__list']}>
           {types.map((item, index) => {
             return (
               <li
                 key={index}
                 onClick={() => setActiveDough(index)}
-                className={activeDough === index ? 'active' : ''}
+                className={`${activeDough === index ? styles.active : ''} ${
+                  styles['product-card__list-item']
+                }`}
               >
                 {listOfSeasonTitles[item]}
               </li>
             );
           })}
         </ul>
-        <ul>
+        <ul className={styles['product-card__list']}>
           {sizes.map((size, index) => {
             return (
               <li
                 key={index}
                 onClick={() => setActiveSize(index)}
-                className={activeSize === index ? 'active' : ''}
+                className={`${activeSize === index ? styles.active : ''} ${
+                  styles['product-card__list-item']
+                }`}
               >
                 {size}
               </li>
@@ -38,10 +46,12 @@ function ProductBlock({ imageUrl, title, types, price, sizes }) {
           })}
         </ul>
       </div>
-      <div className='product-block__bottom'>
-        <div className='product-block__price'>от {price} ₽</div>
-        <button className='button button_outline button_add'>
+      <div className='product-card__footer'>
+        <div className='product-card__price'>от {price} ₽</div>
+        {/* <button className='button button_outline button_add'> */}
+        <button className='product-card__button'>
           <svg
+            className='product-card__button-icon'
             width='12'
             height='12'
             viewBox='0 0 12 12'
@@ -53,12 +63,12 @@ function ProductBlock({ imageUrl, title, types, price, sizes }) {
               fill='white'
             />
           </svg>
-          <span>Добавить</span>
-          <i>0</i>
+          <span className='product-card__button-name'>Добавить</span>
+          <span className='product-card__counter'>0</span>
         </button>
       </div>
     </div>
   );
 }
 
-export default ProductBlock;
+export default ProductCardBlock;

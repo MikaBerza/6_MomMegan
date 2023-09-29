@@ -5,7 +5,7 @@ export const listOfNamesOfSortingElements = [
   'алфавиту',
 ];
 // список названий элементов категорий
-export const listOfCategoryItemNames = [
+export const listOfFilteringItemNames = [
   'Все',
   'Мужские',
   'Женские',

@@ -1,16 +1,15 @@
 //
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import style from '../HeaderBlock/Header.module.css';
+import style from './Header.module.css';
 
 import mLogo from '../../assets/img/M-logo.png';
 
 function Header() {
-  console.log(style);
+  // console.log(style);
   return (
-    <div className='container'>
-      <div className={style.header}>
+    <header className={style.header}>
+      <div className='container'>
         {/* кликнув по лого переходим на главную страницу */}
         <Link to='/'>
           <div className={style['header__logo']}>
@@ -29,7 +28,6 @@ function Header() {
         </Link>
 
         <div className='header__basket'>
-          {/* <Link to='/cart' className='button button_cart'> */}
           <Link to='/cart' className={style['header__button']}>
             <span className={style['header__price']}>520 ₽</span>
             <div className={style['header__delimiter']}></div>
@@ -57,7 +55,7 @@ function Header() {
           </Link>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
 

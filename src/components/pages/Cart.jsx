@@ -6,7 +6,7 @@ function Cart() {
     <div className='container container_cart'>
       <div className='cart'>
         <div className='cart__top'>
-          <h2 className='content__title'>
+          <h2 className='main-title'>
             <svg
               width='18'
               height='18'
@@ -79,11 +79,11 @@ function Cart() {
             <span>Очистить корзину</span>
           </div>
         </div>
-        <div className='content__items'>
+        <div className='card-wrap'>
           <div className='cart__item'>
             <div className='cart__item-img'>
               <img
-                className='product-block__image'
+                className='product-card__image'
                 src='https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg'
                 alt='Pizza'
               />
@@ -158,11 +158,11 @@ function Cart() {
             </div>
           </div>
         </div>
-        <div className='content__items'>
+        <div className='card-wrap'>
           <div className='cart__item'>
             <div className='cart__item-img'>
               <img
-                className='product-block__image'
+                className='product-card__image'
                 src='https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg'
                 alt='Pizza'
               />
@@ -237,11 +237,11 @@ function Cart() {
             </div>
           </div>
         </div>
-        <div className='content__items'>
+        <div className='card-wrap'>
           <div className='cart__item'>
             <div className='cart__item-img'>
               <img
-                className='product-block__image'
+                className='product-card__image'
                 src='https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg'
                 alt='Pizza'
               />
@@ -316,11 +316,11 @@ function Cart() {
             </div>
           </div>
         </div>
-        <div className='content__items'>
+        <div className='card-wrap'>
           <div className='cart__item'>
             <div className='cart__item-img'>
               <img
-                className='product-block__image'
+                className='product-card__image'
                 src='https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg'
                 alt='Pizza'
               />
@@ -395,11 +395,11 @@ function Cart() {
             </div>
           </div>
         </div>
-        <div className='content__items'>
+        <div className='card-wrap'>
           <div className='cart__item'>
             <div className='cart__item-img'>
               <img
-                className='product-block__image'
+                className='product-card__image'
                 src='https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg'
                 alt='Pizza'
               />

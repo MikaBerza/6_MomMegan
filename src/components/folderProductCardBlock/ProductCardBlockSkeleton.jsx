@@ -1,9 +1,9 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-const ProductBlockSkeleton = () => (
+const ProductCardBlockSkeleton = () => (
   <ContentLoader
-    className='product-block'
+    className='product-card'
     speed={1}
     width={280}
     height={457}
@@ -19,4 +19,4 @@ const ProductBlockSkeleton = () => (
   </ContentLoader>
 );
 
-export default ProductBlockSkeleton;
+export default ProductCardBlockSkeleton;

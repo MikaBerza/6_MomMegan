@@ -1,15 +1,15 @@
 //
 import React from 'react';
 
-function Categories({ value, listOfCategoryItemNames, onClickCategories }) {
+function Filtering({ value, listOfFilteringItemNames, onClickFiltering }) {
   return (
-    <div className='categories'>
+    <div className='filtering'>
       <ul>
-        {listOfCategoryItemNames.map((nameItem, index) => {
+        {listOfFilteringItemNames.map((nameItem, index) => {
           return (
             <li
               key={index}
-              onClick={() => onClickCategories(index)}
+              onClick={() => onClickFiltering(index)}
               className={value === index ? 'active' : ''}
             >
               {nameItem}
@@ -21,4 +21,4 @@ function Categories({ value, listOfCategoryItemNames, onClickCategories }) {
   );
 }
 
-export default Categories;
+export default Filtering;
