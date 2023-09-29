@@ -1,9 +1,9 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-const MeganBlockSkeleton = () => (
+const ProductBlockSkeleton = () => (
   <ContentLoader
-    className='pizza-block'
+    className='product-block'
     speed={1}
     width={280}
     height={457}
@@ -19,4 +19,4 @@ const MeganBlockSkeleton = () => (
   </ContentLoader>
 );
 
-export default MeganBlockSkeleton;
+export default ProductBlockSkeleton;

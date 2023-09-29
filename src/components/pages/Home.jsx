@@ -2,8 +2,8 @@ import React from 'react';
 //
 import Categories from '../Categories';
 import Sort from '../Sort';
-import MeganBlock from '../folderMeganBlock/MeganBlock';
-import MeganBlockSkeleton from '../folderMeganBlock/MeganBlockSkeleton';
+import ProductBlock from '../folderProductBlock/ProductBlock';
+import ProductBlockSkeleton from '../folderProductBlock/ProductBlockSkeleton';
 
 import { getFilteredArrayByCategory } from '../../modules/modules';
 import { listOfCategoryItemNames } from '../../assets/listsWithNames';
@@ -63,7 +63,7 @@ function Home() {
   // console.log(arrNewDataProduct);
 
   return (
-    <div className='container'>
+    <div className=''>
       <div className='content__top'>
         {/* Категории */}
         <Categories
@@ -74,16 +74,16 @@ function Home() {
         {/* Сортировка */}
         <Sort sortId={sortId} setSortId={setSortId} />
       </div>
-      <h2 className='content__title'>Все пиццы</h2>
+      <h2 className='content__title'>Товары</h2>
       <div className='content__items'>
         {/* Пицца-блок */}
-        {/* если  isLoading === true отображаем MeganBlockSkeleton, а если false отображаем MeganBlock*/}
+        {/* если  isLoading === true отображаем ProductBlockSkeleton, а если false отображаем ProductBlock*/}
         {isLoading
           ? arrayForSkeleton.map((item, index) => {
-              return <MeganBlockSkeleton key={index} />;
+              return <ProductBlockSkeleton key={index} />;
             })
           : arrNewDataProduct.map((obj) => {
-              return <MeganBlock key={obj.id} {...obj} />;
+              return <ProductBlock key={obj.id} {...obj} />;
             })}
       </div>
     </div>

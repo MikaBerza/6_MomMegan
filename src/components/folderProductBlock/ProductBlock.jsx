@@ -1,15 +1,16 @@
 import React from 'react';
+import styles from './ProductBlock.module.css';
+import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 
-function MeganBlock({ imageUrl, title, types, price, sizes }) {
+function ProductBlock({ imageUrl, title, types, price, sizes }) {
   const [activeDough, setActiveDough] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
-  const typeNameOfTest = ['летнии', 'осеннии', 'зимнии'];
 
   return (
-    <div className='pizza-block'>
-      <img className='pizza-block__image' src={imageUrl} alt='Pizza' />
-      <h4 className='pizza-block__title'>{title}</h4>
-      <div className='pizza-block__selector'>
+    <div className='product-block'>
+      <img className='product-block__image' src={imageUrl} alt='Pizza' />
+      <h4 className='product-block__title'>{title}</h4>
+      <div className='product-block__selector'>
         <ul>
           {types.map((item, index) => {
             return (
@@ -18,7 +19,7 @@ function MeganBlock({ imageUrl, title, types, price, sizes }) {
                 onClick={() => setActiveDough(index)}
                 className={activeDough === index ? 'active' : ''}
               >
-                {typeNameOfTest[item]}
+                {listOfSeasonTitles[item]}
               </li>
             );
           })}
@@ -37,8 +38,8 @@ function MeganBlock({ imageUrl, title, types, price, sizes }) {
           })}
         </ul>
       </div>
-      <div className='pizza-block__bottom'>
-        <div className='pizza-block__price'>от {price} ₽</div>
+      <div className='product-block__bottom'>
+        <div className='product-block__price'>от {price} ₽</div>
         <button className='button button_outline button_add'>
           <svg
             width='12'
@@ -60,4 +61,4 @@ function MeganBlock({ imageUrl, title, types, price, sizes }) {
   );
 }
 
-export default MeganBlock;
+export default ProductBlock;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header';
+import Header from './components/HeaderBlock/Header';
 import Home from './components/pages/Home';
 import Cart from './components/pages/Cart';
 import NotFound from './components/pages/NotFound';
@@ -14,8 +14,6 @@ function App() {
       {/* Заголовок */}
       <Header />
       <div className='content'>
-        {/* <Home /> */}
-        {/* <NotFound /> */}
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
