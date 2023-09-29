@@ -11,7 +11,7 @@ function ProductCard({ imageUrl, title, types, price, sizes }) {
       <img
         className={styles['product-card__image']}
         src={imageUrl}
-        alt='image'
+        alt='product'
       />
       <h4 className={styles['product-card__title']}>{title}</h4>
       <div className={styles['product-card__selector']}>

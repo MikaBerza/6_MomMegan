@@ -85,13 +85,3 @@ function Home() {
 
 export default Home;
 
-{
-  /* <div class='card-wrap'>
-  <div class='product-card'>
-    <img class='product-card__image' />
-    <h4 class='product-card__title'></h4>
-    <div class='product-card__selector'></div>
-    <div class='product-card__button'></div>
-  </div>
-</div>; */
-}

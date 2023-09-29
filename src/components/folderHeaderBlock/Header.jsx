@@ -59,25 +59,3 @@ function Header() {
 }
 
 export default Header;
-
-{/* <header class='heading'>
-  <div class='label'>
-    <a href=''></a>
-    <div class='label__images'>
-      <img class='label__images-item' />
-    </div>
-    <div>
-      <h1 class='label__title'></h1>
-      <p class='label__subtitle'></p>
-    </div>
-  </div>
-
-  <div class='basket'>
-    <a class='basket__button' href=''>
-      <span class='basket__price'></span>
-      <div class='basket__delimiter'></div>
-      <svg class='basket__images'></svg>
-      <span class='basket__counter'></span>
-    </a>
-  </div>
-</header> */}
