@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-const ProductCardBlockSkeleton = () => (
+const ProductCardSkeleton = () => (
   <ContentLoader
     className='product-card'
     speed={1}
@@ -19,4 +19,4 @@ const ProductCardBlockSkeleton = () => (
   </ContentLoader>
 );
 
-export default ProductCardBlockSkeleton;
+export default ProductCardSkeleton;

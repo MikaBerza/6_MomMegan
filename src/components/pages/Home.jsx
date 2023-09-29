@@ -1,8 +1,9 @@
 import React from 'react';
 
-import SortfiltrationBlock from '../folderSortingFiltering/SortfiltrationBlock';
-import ProductCardBlock from '../folderProductCardBlock/ProductCardBlock';
-import ProductCardBlockSkeleton from '../folderProductCardBlock/ProductCardBlockSkeleton';
+import Sort from '../folderSortBlock/Sort';
+import Filtering from '../folderFilteringBlock/Filtering';
+import ProductCard from '../folderProductCardBlock/ProductCard';
+import ProductCardSkeleton from '../folderProductCardBlock/ProductCardSkeleton';
 
 import { getFilteredArrayByFiltering } from '../../modules/modules';
 
@@ -60,25 +61,22 @@ function Home() {
 
   return (
     <>
-      {/* Сортировка и Фильтрация Блок */}
-      <SortfiltrationBlock
-        filteringId={filteringId}
-        setFilteringId={setFilteringId}
-        sortId={sortId}
-        setSortId={setSortId}
-      />
+      <section className='choice'>
+        <Filtering value={filteringId} onClickFiltering={setFilteringId} />
+        <Sort sortId={sortId} setSortId={setSortId} />
+      </section>
+
       <section className='main-title'>
         <h1 className='main-title__item'>Товары</h1>
       </section>
 
       <section className='card-wrap'>
-        {/* Продукт-Блок */}
         {isLoading
           ? arrayForSkeleton.map((item, index) => {
-              return <ProductCardBlockSkeleton key={index} />;
+              return <ProductCardSkeleton key={index} />;
             })
           : arrNewDataProduct.map((obj) => {
-              return <ProductCardBlock key={obj.id} {...obj} />;
+              return <ProductCard key={obj.id} {...obj} />;
             })}
       </section>
     </>

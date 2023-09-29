@@ -1,7 +1,8 @@
 //
 import React from 'react';
+import { listOfFilteringItemNames } from '../../assets/listsWithNames';
 
-function Filtering({ value, listOfFilteringItemNames, onClickFiltering }) {
+function Filtering({ value, onClickFiltering }) {
   return (
     <div className='filtering'>
       <ul>

@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './ProductCardBlock.module.css';
+import styles from './ProductCard.module.css';
 import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 
-function ProductCardBlock({ imageUrl, title, types, price, sizes }) {
+function ProductCard({ imageUrl, title, types, price, sizes }) {
   const [activeDough, setActiveDough] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
 
@@ -71,4 +71,4 @@ function ProductCardBlock({ imageUrl, title, types, price, sizes }) {
   );
 }
 
-export default ProductCardBlock;
+export default ProductCard;
