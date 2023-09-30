@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ProductCard.module.css';
+import style from './ProductCard.module.css';
 import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 
 function ProductCard({ imageUrl, title, types, price, sizes }) {
@@ -7,22 +7,22 @@ function ProductCard({ imageUrl, title, types, price, sizes }) {
   const [activeSize, setActiveSize] = React.useState(0);
 
   return (
-    <div className={styles['product-card']}>
+    <div className={style['product-card']}>
       <img
-        className={styles['product-card__image']}
+        className={style['product-card__image']}
         src={imageUrl}
         alt='product'
       />
-      <h4 className={styles['product-card__title']}>{title}</h4>
-      <div className={styles['product-card__selector']}>
-        <ul className={styles['product-card__list']}>
+      <h4 className={style['product-card__title']}>{title}</h4>
+      <div className={style['product-card__selector']}>
+        <ul className={style['product-card__list']}>
           {types.map((item, index) => {
             return (
               <li
                 key={index}
                 onClick={() => setActiveDough(index)}
-                className={`${activeDough === index ? styles.active : ''} ${
-                  styles['product-card__list-item']
+                className={`${activeDough === index ? style.active : ''} ${
+                  style['product-card__list-item']
                 }`}
               >
                 {listOfSeasonTitles[item]}
@@ -30,14 +30,14 @@ function ProductCard({ imageUrl, title, types, price, sizes }) {
             );
           })}
         </ul>
-        <ul className={styles['product-card__list']}>
+        <ul className={style['product-card__list']}>
           {sizes.map((size, index) => {
             return (
               <li
                 key={index}
                 onClick={() => setActiveSize(index)}
-                className={`${activeSize === index ? styles.active : ''} ${
-                  styles['product-card__list-item']
+                className={`${activeSize === index ? style.active : ''} ${
+                  style['product-card__list-item']
                 }`}
               >
                 {size}
@@ -46,12 +46,12 @@ function ProductCard({ imageUrl, title, types, price, sizes }) {
           })}
         </ul>
       </div>
-      <div className='product-card__footer'>
-        <div className='product-card__price'>от {price} ₽</div>
+      <div className={style['product-card__footer']}>
+        <div className={style['product-card__price']}>{price} ₽</div>
         {/* <button className='button button_outline button_add'> */}
-        <button className='product-card__button'>
+        <button className={style['product-card__button']}>
           <svg
-            className='product-card__button-icon'
+            className={style['product-card__button-icon']}
             width='12'
             height='12'
             viewBox='0 0 12 12'
@@ -63,8 +63,8 @@ function ProductCard({ imageUrl, title, types, price, sizes }) {
               fill='white'
             />
           </svg>
-          <span className='product-card__button-name'>Добавить</span>
-          <span className='product-card__counter'>0</span>
+          <span className={style['product-card__button-name']}>Добавить</span>
+          <span className={style['product-card__counter']}>0</span>
         </button>
       </div>
     </div>

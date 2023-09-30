@@ -1,5 +1,6 @@
 .sort {
-  position: relative
+  position: relative;
+  padding-top: 40px;
 }
 
 .sort__label {

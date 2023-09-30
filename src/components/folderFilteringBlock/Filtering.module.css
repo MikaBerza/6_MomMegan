@@ -1,3 +1,7 @@
+.filtering {
+  padding-top: 40px;
+}
+
 .filtering__list {
   display: flex;
   flex-wrap: wrap;

@@ -5,7 +5,7 @@ import { listOfFilteringItemNames } from '../../assets/listsWithNames';
 
 function Filtering({ value, onClickFiltering }) {
   return (
-    <div className='filtering'>
+    <div className={style['filtering']}>
       <ul className={style['filtering__list']}>
         {listOfFilteringItemNames.map((nameItem, index) => {
           return (

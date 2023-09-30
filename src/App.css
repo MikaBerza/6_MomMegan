@@ -476,7 +476,7 @@ a {
   cursor: auto
 } */
 
-.product-card__footer {
+/* .product-card__footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -487,14 +487,14 @@ a {
   -ms-flex-pack: justify;
   justify-content: space-between;
   margin-top: 20px
-}
+} */
 
-.product-card__price {
+/* .product-card__price {
   font-size: 22px;
   font-weight: bold;
   line-height: 27px;
   letter-spacing: 0.015em
-}
+} */
 
 body {
   background-color: #f9f9f9
@@ -526,7 +526,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 40px;
 }
 
 .container_cart {
@@ -866,7 +865,11 @@ body {
   font-weight: 600;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1440px) {
+  .wrapper {
+    padding: 0 20px;
+  }
+
   .choice {
     flex-direction: column-reverse;
     justify-content: center;
@@ -879,83 +882,24 @@ body {
   .filtering {
     margin-top: 30px;
   }
-
-  .main-title {
-    text-align: center;
-  }
 }
 
-@media (max-width: 1130px) {
+@media (max-width: 1024px) {
+  .wrapper {
+    margin-top: 20px;
+  }
+
   .card-wrap {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 730px) {
+@media (max-width: 640px) {
+  body {
+    padding: 0 20px;
+  }
+
   .card-wrap {
     grid-template-columns: repeat(1, 1fr);
-  }
-
-  .container_cart .cart__item {
-    flex-direction: column;
-    padding-top: 0;
-  }
-
-  .container_cart .cart__item-img,
-  .container_cart .cart__item-info,
-  .container_cart .cart__item-inner {
-    justify-content: center;
-    width: auto;
-    margin: auto;
-    padding-top: 15px;
-    text-align: center;
-  }
-
-  .container_cart .product-card__image {
-    width: 260px;
-    height: 260px;
-  }
-}
-
-@media (max-width: 645px) {
-  .header .container {
-    flex-direction: column;
-  }
-
-  .button_cart {
-    margin-top: 25px;
-  }
-
-  .wrapper {
-    width: calc(100vw - 40px);
-  }
-
-  .container_cart {
-    margin: 0 auto;
-  }
-
-  .container_cart .cart__top {
-    align-items: baseline;
-    flex-direction: column;
-  }
-
-  .container_cart .cart__clear {
-    margin-top: 10px;
-  }
-
-  .container_cart .cart__bottom-details {
-    align-items: end;
-    flex-direction: column;
-  }
-
-  .container_cart .cart__bottom-buttons {
-    align-items: center;
-    flex-direction: column-reverse;
-    margin: 0px;
-  }
-
-  .container_cart .cart__bottom-buttons a,
-  .container_cart .cart__bottom-buttons div {
-    margin-top: 20px;
   }
 }

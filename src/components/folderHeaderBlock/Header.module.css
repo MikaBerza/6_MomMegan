@@ -1,12 +1,12 @@
 .heading {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  padding: 40px 0;
-  border-bottom: 1px solid #f6f6f6;
 }
 
 .label {
+  padding-top: 40px;
   padding-right: 10px;
 }
 
@@ -32,8 +32,8 @@
 }
 
 .basket {
+  padding-top: 40px;
   max-width: 200px;
-  padding-left: 10px;
 }
 
 .basket__button {
