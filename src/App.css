@@ -46,9 +46,10 @@ html {
 }
 
 body {
+  padding: 0 50px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: #232323
+  color: #232323;
 }
 
 a,
@@ -80,7 +81,7 @@ a {
 .wrapper {
   max-width: 1920px;
   height: 100%;
-  margin: 50px;
+  margin: 50px auto;
   padding: 0 100px;
   background-color: #fff;
   border-radius: 10px;
@@ -312,15 +313,15 @@ a {
   border-radius: 30px;
 }
 
-.filtering ul {
+/* .filtering ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
+} */
 
-.filtering ul li {
+/* .filtering ul li {
   margin: 10px 10px 10px 0;
   padding: 13px 30px;
   font-weight: bold;
@@ -334,9 +335,9 @@ a {
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-}
+} */
 
-.filtering ul li:hover {
+/* .filtering ul li:hover {
   background-color: #f4f4f4;
 }
 
@@ -347,36 +348,36 @@ a {
 .filtering ul li.active {
   color: #fff;
   background-color: #282828;
-}
+} */
 
-.sort {
+/* .sort {
   position: relative
-}
+} */
 
-.sort__label {
+/* .sort__label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center
-}
+} */
 
-.sort__label svg {
+/* .sort__label svg {
   margin-right: 8px
-}
+} */
 
-.sort__label b {
+/* .sort__label b {
   margin-right: 8px
-}
+} */
 
-.sort__label span {
+/* .sort__label span {
   color: #000000;
   border-bottom: 1px dashed #000000;
   cursor: pointer
-}
+} */
 
-.sort__popup {
+/* .sort__popup {
   position: absolute;
   right: 0;
   overflow: hidden;
@@ -387,26 +388,26 @@ a {
   -webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
   border-radius: 10px;
-}
+} */
 
-.sort__popup ul {
+/* .sort__popup ul {
   overflow: hidden
-}
+} */
 
-.sort__popup ul li {
+/* .sort__popup ul li {
   padding: 12px 20px;
   cursor: pointer
-}
+} */
 
-.sort__popup ul li.active,
+/* .sort__popup ul li.active,
 .sort__popup ul li:hover {
   background: rgba(254, 95, 30, 0.05)
-}
+} */
 
-.sort__popup ul li.active {
+/* .sort__popup ul li.active {
   font-weight: bold;
   color: #000000
-}
+} */
 
 /* .product-card {
   width: 300px;
@@ -517,7 +518,7 @@ body {
   justify-items: center;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 10px;
+  grid-column-gap: 50px;
   padding-top: 40px;
 }
 

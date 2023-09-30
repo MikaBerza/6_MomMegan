@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './Sort.module.css';
 import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
 
 function Sort({ sortId, setSortId }) {
@@ -11,9 +12,10 @@ function Sort({ sortId, setSortId }) {
   };
 
   return (
-    <div className='sort'>
-      <div className='sort__label'>
+    <div className={style['sort']}>
+      <div className={style['sort__label']}>
         <svg
+          className={style['sort__img']}
           width='10'
           height='6'
           viewBox='0 0 10 6'
@@ -25,8 +27,9 @@ function Sort({ sortId, setSortId }) {
             fill='#2C2C2C'
           />
         </svg>
-        <b>Сортировка по:</b>
+        <span className={style['sort__text-bold']}>Сортировка по:</span>
         <span
+          className={style['sort__text-normal']}
           onClick={() => {
             setOpen(!open);
           }}
@@ -35,8 +38,8 @@ function Sort({ sortId, setSortId }) {
         </span>
       </div>
       {open && (
-        <div className='sort__popup'>
-          <ul>
+        <div className={style['sort__popup']}>
+          <ul className={style['sort__list']}>
             {listOfNamesOfSortingElements.map((item, index) => {
               return (
                 <li
@@ -44,7 +47,10 @@ function Sort({ sortId, setSortId }) {
                   onClick={() => {
                     onClickSelectAnItem(index);
                   }}
-                  className={sortId === index ? 'active' : ''}
+                  className={`${sortId === index ? style['active'] : ''} ${
+                    style['sort__list-item']
+                  }
+                `}
                 >
                   {item}
                 </li>
@@ -58,3 +64,26 @@ function Sort({ sortId, setSortId }) {
 }
 
 export default Sort;
+
+/*
+<div class='choice'>
+  <div class='filtering'>
+    <ul class='filtering__list'>
+      <li class='filtering__list-item'></li>
+    </ul>
+  </div>
+
+  <div class='sort'>
+    <div class='sort__label'>
+      <svg class='sort__img'></svg>
+      <span class='sort__text-bold'></span>
+      <span class='sort__text-normal'></span>
+    </div>
+    <div class='sort__popup'>
+      <ul class='sort__list'>
+        <li class='sort__list-item'></li>
+      </ul>
+    </div>
+  </div>
+</div>;
+*/
