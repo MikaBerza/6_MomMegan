@@ -48,7 +48,6 @@ function ProductCard({ imageUrl, title, types, price, sizes }) {
       </div>
       <div className={style['product-card__footer']}>
         <div className={style['product-card__price']}>{price} ₽</div>
-        {/* <button className='button button_outline button_add'> */}
         <button className={style['product-card__button']}>
           <svg
             className={style['product-card__button-icon']}
