@@ -5,40 +5,30 @@ import Filtering from '../folderFilteringBlock/Filtering';
 import ProductCard from '../folderProductCardBlock/ProductCard';
 import ProductCardSkeleton from '../folderProductCardBlock/ProductCardSkeleton';
 
-import { getFilteredArrayByFiltering } from '../../modules/modules';
+import { getFilteredData } from '../../modules/modules';
 
 function Home() {
   const [filteringId, setFilteringId] = React.useState(0);
   const [sortId, setSortId] = React.useState(0);
-  const [productData, setPizzaProductData] = React.useState([]);
+  const [initialProductData, setInitialProductData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   // создадим массив для отображения скелетона пиц (он будет заполнен 10шт undefined)
   const arrayForSkeleton = [...new Array(15)];
 
-  /*______________________________________________________________________________________________*/
-  // Проверим работу импортируемой функции
-  // console.log(
-  //   getFilteredArrayByFiltering(productData, 1, 2),
-  //   'getFilteredArrayByFiltering'
-  // );
-  /*______________________________________________________________________________________________*/
-
-  /*
-  Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !!!
+  /* Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !
   Подробнее:
   Когда компонент первоначально монтируется, `useEffect()` запускает асинхронный вызов `fetch()'
-  чтобы получить данные о пиццах из базы данных Firebase.
-  Этот эффект будет запущен только один раз, 
-  так как зависимостей нет.
-  */
+  чтобы получить данные о пиццах из базы данных Firebase. Этот эффект будет запущен только 
+  один раз, так как зависимостей нет. */
   React.useEffect(() => {
+    setIsLoading(true);
     fetch('https://mommegan-c835e-default-rtdb.firebaseio.com/shoesData.json')
       // преобразуем полученный ответа `response` в формате JSON
       .then((response) => response.json())
-      // принимаем преобразованный объект JavaScript в качестве аргумента `productData`.
-      .then((productData) => {
-        // вызываем функцию `setPizzaProductData(productData)` и устанавливаем значение `productData` в состояние компонента
-        setPizzaProductData(productData);
+      // принимаем преобразованный объект JavaScript в качестве аргумента `initialProductData`.
+      .then((data) => {
+        // вызываем функцию `setInitialProductData()` в нееи устанавливаем значение `data` в состояние компонента
+        setInitialProductData(data);
         setIsLoading(false);
       })
       // ловим ошибки, возникающие при выполнении fetch-запроса
@@ -51,19 +41,11 @@ function Home() {
     window.scrollTo(0, 0);
   }, []);
 
-  // присваиваем вернувшийся массив из функции в константу
-  const arrNewDataProduct = getFilteredArrayByFiltering(
-    productData,
-    sortId,
-    filteringId
-  );
-  // console.log(arrNewDataProduct);
-
   return (
     <>
       <section className='choice'>
-        <Filtering value={filteringId} onClickFiltering={setFilteringId} />
-        <Sort sortId={sortId} setSortId={setSortId} />
+        <Filtering valueId={filteringId} onClickFiltering={setFilteringId} />
+        <Sort valueId={sortId} onClickSorting={setSortId} />
       </section>
 
       <section className='main-title'>
@@ -75,13 +57,14 @@ function Home() {
           ? arrayForSkeleton.map((item, index) => {
               return <ProductCardSkeleton key={index} />;
             })
-          : arrNewDataProduct.map((obj) => {
-              return <ProductCard key={obj.id} {...obj} />;
-            })}
+          : getFilteredData(initialProductData, sortId, filteringId).map(
+              (obj) => {
+                return <ProductCard key={obj.id} {...obj} />;
+              }
+            )}
       </section>
     </>
   );
 }
 
 export default Home;
-

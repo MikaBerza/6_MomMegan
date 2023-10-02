@@ -15,7 +15,7 @@ function convertAnArrayOfElementsToAnArrayWithIndexes(arr) {
   return newArr;
 }
 // функция, получить отсортированный массив по (алфавиту(title), цене(price), популярности(rating))
-export function getSortedArrayBy(productData, sortingNumber) {
+export function getSortedData(productData, sortingNumber) {
   // Создаем копию исходного массива
   const copyDataArray = [...productData];
   // Выбираем метод сортировки в зависимости от sortingNumber
@@ -41,7 +41,7 @@ export function getSortedArrayBy(productData, sortingNumber) {
 }
 
 // функция, получить отфильтрованный массив по (категориям(category))
-export function getFilteredArrayByFiltering(
+export function getFilteredData(
   productData,
   sortingNumber,
   categoryNumber
@@ -61,7 +61,7 @@ export function getFilteredArrayByFiltering(
     return 'Указан неверный параметр функции categoryNumber (Invalid function parameter categoryNumber specified)';
   }
   // Отсортировать массив по заданному свойству (sortingNumber)
-  const sortedArray = getSortedArrayBy(productData, sortingNumber);
+  const sortedArray = getSortedData(productData, sortingNumber);
   // если выбрана категория "Все", то возвращаем отсортированный массив
   if (categoryNumber === 0) {
     return sortedArray;

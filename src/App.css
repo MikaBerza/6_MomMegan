@@ -865,7 +865,7 @@ body {
   font-weight: 600;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1490px) {
   .wrapper {
     padding: 0 20px;
   }

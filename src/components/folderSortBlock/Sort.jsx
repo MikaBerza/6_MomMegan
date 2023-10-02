@@ -2,12 +2,12 @@ import React from 'react';
 import style from './Sort.module.css';
 import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
 
-function Sort({ sortId, setSortId }) {
+function Sort({ valueId, onClickSorting }) {
   const [open, setOpen] = React.useState(false);
-  const searchItemName = listOfNamesOfSortingElements[sortId];
+  const searchItemName = listOfNamesOfSortingElements[valueId];
 
   const onClickSelectAnItem = (index) => {
-    setSortId(index);
+    onClickSorting(index);
     setOpen(false);
   };
 
@@ -47,7 +47,7 @@ function Sort({ sortId, setSortId }) {
                   onClick={() => {
                     onClickSelectAnItem(index);
                   }}
-                  className={`${sortId === index ? style['active'] : ''} ${
+                  className={`${valueId === index ? style['active'] : ''} ${
                     style['sort__list-item']
                   }
                 `}
@@ -64,26 +64,3 @@ function Sort({ sortId, setSortId }) {
 }
 
 export default Sort;
-
-/*
-<div class='choice'>
-  <div class='filtering'>
-    <ul class='filtering__list'>
-      <li class='filtering__list-item'></li>
-    </ul>
-  </div>
-
-  <div class='sort'>
-    <div class='sort__label'>
-      <svg class='sort__img'></svg>
-      <span class='sort__text-bold'></span>
-      <span class='sort__text-normal'></span>
-    </div>
-    <div class='sort__popup'>
-      <ul class='sort__list'>
-        <li class='sort__list-item'></li>
-      </ul>
-    </div>
-  </div>
-</div>;
-*/

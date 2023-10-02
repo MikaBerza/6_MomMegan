@@ -3,7 +3,7 @@ import React from 'react';
 import style from './Filtering.module.css';
 import { listOfFilteringItemNames } from '../../assets/listsWithNames';
 
-function Filtering({ value, onClickFiltering }) {
+function Filtering({ valueId, onClickFiltering }) {
   return (
     <div className={style['filtering']}>
       <ul className={style['filtering__list']}>
@@ -12,7 +12,7 @@ function Filtering({ value, onClickFiltering }) {
             <li
               key={index}
               onClick={() => onClickFiltering(index)}
-              className={`${value === index ? style.active : ''} ${
+              className={`${valueId === index ? style.active : ''} ${
                 style['filtering__list-item']
               }
               `}
