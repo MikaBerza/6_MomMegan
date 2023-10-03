@@ -22,8 +22,8 @@
 }
 
 .text-normal {
-  color: #000000;
-  border-bottom: 1px dashed #000000;
+  color: var(--black1);
+  border-bottom: 1px dashed var(--black1);
   cursor: pointer
 }
 
@@ -34,7 +34,7 @@
   width: 160px;
   margin-top: 15px;
   padding: 10px 0;
-  background: #ffffff;
+  background: white;
   -webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
   border-radius: 10px;
@@ -55,10 +55,10 @@
 
 .list-item:active {
   font-weight: bold;
-  color: #000000
+  color: var(--black1)
 }
 
 .active {
   font-weight: bold;
-  color: #000000
+  color: var(--black1)
 }

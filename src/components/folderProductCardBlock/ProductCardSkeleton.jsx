@@ -9,7 +9,7 @@ const ProductCardSkeleton = () => (
     width={280}
     height={457}
     viewBox='0 0 280 457'
-    backgroundColor='#f3f3f3'
+    backgroundColor='var(--light-gray6)'
     foregroundColor='#ecebeb'
   >
     <rect x='-1' y='290' rx='5' ry='5' width='280' height='26' />
