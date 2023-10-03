@@ -1,12 +1,10 @@
-//
 import React from 'react';
 import { Link } from 'react-router-dom';
 import style from './Header.module.css';
-
+//
 import mLogo from '../../assets/img/M-logo.png';
 
 function Header() {
-  // console.log(style);
   return (
     <>
       <div className={style['label']}>
@@ -27,12 +25,12 @@ function Header() {
         </Link>
       </div>
 
-      <div className={style['basket']}>
-        <Link to='/cart' className={style['basket__button']}>
-          <span className={style['basket__price']}>520</span>
-          <div className={style['basket__delimiter']}></div>
+      <div className={style['basket-button']}>
+        <Link to='/cart' className={style['basket-button__item']}>
+          <span className={style['basket-button__price']}>520</span>
+          <div className={style['basket-button__delimiter']}></div>
           <svg
-            className={style['basket__images']}
+            className={style['basket-button__images']}
             width='18px'
             height='18px'
             viewBox='0 0 24 24'
@@ -51,7 +49,7 @@ function Header() {
               <path d='M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z' />
             </g>
           </svg>
-          <span className={style['basket__counter']}>3</span>
+          <span className={style['basket-button__counter']}>3</span>
         </Link>
       </div>
     </>
