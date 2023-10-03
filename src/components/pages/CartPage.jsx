@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 //
-function Cart() {
+function CartPage() {
   return (
     <div className='container container_cart'>
       <div className='cart'>
@@ -518,4 +518,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default CartPage;

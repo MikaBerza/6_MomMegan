@@ -2,9 +2,9 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/folderHeaderBlock/Header';
-import Home from './components/pages/Home';
-import Cart from './components/pages/Cart';
-import NotFound from './components/pages/NotFound';
+import HomePage from './components/pages/HomePage';
+import CartPage from './components/pages/CartPage';
+import NotFoundPage from './components/pages/NotFoundPage';
 
 import './App.css';
 
@@ -15,9 +15,9 @@ function App() {
         <Header />
       </header>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='*' element={<NotFound />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='/cart' element={<CartPage />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </div>
   );

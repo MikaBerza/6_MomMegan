@@ -7,7 +7,7 @@ import ProductCardSkeleton from '../folderProductCardBlock/ProductCardSkeleton';
 
 import { getFilteredData } from '../../modules/modules';
 
-function Home() {
+function HomePage() {
   const [filteringId, setFilteringId] = React.useState(0);
   const [sortId, setSortId] = React.useState(0);
   const [initialProductData, setInitialProductData] = React.useState([]);
@@ -67,4 +67,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;
