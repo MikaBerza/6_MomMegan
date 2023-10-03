@@ -1,9 +1,9 @@
-.sort {
+.container {
   position: relative;
   padding-top: 40px;
 }
 
-.sort__label {
+.label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,22 +12,22 @@
   align-items: center
 }
 
-.sort__img {
+.img {
   margin-right: 8px
 }
 
-.sort__text-bold {
+.text-bold {
   margin-right: 8px;
   font-weight: 700;
 }
 
-.sort__text-normal {
+.text-normal {
   color: #000000;
   border-bottom: 1px dashed #000000;
   cursor: pointer
 }
 
-.sort__popup {
+.popup {
   position: absolute;
   right: 0;
   overflow: hidden;
@@ -40,20 +40,20 @@
   border-radius: 10px;
 }
 
-.sort__list {
+.list {
   overflow: hidden
 }
 
-.sort__list-item {
+.list-item {
   padding: 12px 20px;
   cursor: pointer
 }
 
-.sort__list-item:hover {
+.list-item:hover {
   background: rgba(254, 95, 30, 0.05)
 }
 
-.sort__list-item:active {
+.list-item:active {
   font-weight: bold;
   color: #000000
 }

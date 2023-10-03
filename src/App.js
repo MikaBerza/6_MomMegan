@@ -11,7 +11,9 @@ import './App.css';
 function App() {
   return (
     <div className='wrapper'>
-      <Header />
+      <header className='heading'>
+        <Header />
+      </header>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/cart' element={<Cart />} />

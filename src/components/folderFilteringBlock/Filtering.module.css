@@ -1,14 +1,14 @@
-.filtering {
+.container {
   padding-top: 40px;
 }
 
-.filtering__list {
+.list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.filtering__list-item {
+.list-item {
   margin: 10px 10px 10px 0;
   padding: 13px 30px;
   font-weight: bold;
@@ -24,11 +24,11 @@
   cursor: pointer;
 }
 
-.filtering__list-item:hover {
+.list-item:hover {
   background-color: #f4f4f4;
 }
 
-.filtering__list-item.active {
+.list-item.active {
   color: #ececec;
   background-color: #282828;
 }

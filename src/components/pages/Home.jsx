@@ -43,7 +43,7 @@ function Home() {
 
   return (
     <>
-      <section className='choice'>
+      <section className='filtering-and-sorting'>
         <Filtering valueId={filteringId} onClickFiltering={setFilteringId} />
         <Sort valueId={sortId} onClickSorting={setSortId} />
       </section>
@@ -52,7 +52,7 @@ function Home() {
         <h1 className='main-title__item'>Товары</h1>
       </section>
 
-      <section className='card-wrap'>
+      <section className='product-gallery'>
         {isLoading
           ? arrayForSkeleton.map((item, index) => {
               return <ProductCardSkeleton key={index} />;

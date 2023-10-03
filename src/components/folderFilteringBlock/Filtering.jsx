@@ -5,15 +5,15 @@ import { listOfFilteringItemNames } from '../../assets/listsWithNames';
 
 function Filtering({ valueId, onClickFiltering }) {
   return (
-    <div className={style['filtering']}>
-      <ul className={style['filtering__list']}>
+    <div className={style['container']}>
+      <ul className={style['list']}>
         {listOfFilteringItemNames.map((nameItem, index) => {
           return (
             <li
               key={index}
               onClick={() => onClickFiltering(index)}
               className={`${valueId === index ? style.active : ''} ${
-                style['filtering__list-item']
+                style['list-item']
               }
               `}
             >

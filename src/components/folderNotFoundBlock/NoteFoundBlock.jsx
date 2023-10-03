@@ -1,17 +1,17 @@
 import React from 'react';
-import styles from './NoteFoundBlock.module.css';
+import style from './NoteFoundBlock.module.css';
 //
 function NoteFoundBlock() {
   return (
-    <div className={styles.wrapper}>
+    <div className={style['container']}>
       <h1>
-        <span className={styles.emoji} role='img' aria-label='Emoji'>
+        <span className={style['emoji']} role='img' aria-label='emoji'>
           &#128579;
         </span>
         <br />
         Ничего не найдено
       </h1>
-      <p className={styles.description}>К сожалению данные отсутствуют</p>
+      <p className={style['description']}>К сожалению данные отсутствуют</p>
     </div>
   );
 }

@@ -7,22 +7,22 @@ function ProductCard({ imageUrl, title, types, price, sizes }) {
   const [activeSize, setActiveSize] = React.useState(0);
 
   return (
-    <div className={style['product-card']}>
+    <div className={style['card']}>
       <img
-        className={style['product-card__image']}
+        className={style['card__image']}
         src={imageUrl}
         alt='product'
       />
-      <h4 className={style['product-card__title']}>{title}</h4>
-      <div className={style['product-card__selector']}>
-        <ul className={style['product-card__list']}>
+      <h4 className={style['card__title']}>{title}</h4>
+      <div className={style['card__selector']}>
+        <ul className={style['card__list']}>
           {types.map((item, index) => {
             return (
               <li
                 key={index}
                 onClick={() => setActiveDough(index)}
                 className={`${activeDough === index ? style.active : ''} ${
-                  style['product-card__list-item']
+                  style['card__list-item']
                 }`}
               >
                 {listOfSeasonTitles[item]}
@@ -30,14 +30,14 @@ function ProductCard({ imageUrl, title, types, price, sizes }) {
             );
           })}
         </ul>
-        <ul className={style['product-card__list']}>
+        <ul className={style['card__list']}>
           {sizes.map((size, index) => {
             return (
               <li
                 key={index}
                 onClick={() => setActiveSize(index)}
                 className={`${activeSize === index ? style.active : ''} ${
-                  style['product-card__list-item']
+                  style['card__list-item']
                 }`}
               >
                 {size}
@@ -46,11 +46,11 @@ function ProductCard({ imageUrl, title, types, price, sizes }) {
           })}
         </ul>
       </div>
-      <div className={style['product-card__footer']}>
-        <div className={style['product-card__price']}>{price} ₽</div>
-        <button className={style['product-card__button']}>
+      <div className={style['card__footer']}>
+        <div className={style['card__price']}>{price} ₽</div>
+        <button className={style['card__button']}>
           <svg
-            className={style['product-card__button-icon']}
+            className={style['card__button-icon']}
             width='12'
             height='12'
             viewBox='0 0 12 12'
@@ -62,8 +62,8 @@ function ProductCard({ imageUrl, title, types, price, sizes }) {
               fill='white'
             />
           </svg>
-          <span className={style['product-card__button-name']}>Добавить</span>
-          <span className={style['product-card__counter']}>0</span>
+          <span className={style['card__button-name']}>Добавить</span>
+          <span className={style['card__counter']}>0</span>
         </button>
       </div>
     </div>

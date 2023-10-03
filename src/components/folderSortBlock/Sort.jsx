@@ -12,10 +12,10 @@ function Sort({ valueId, onClickSorting }) {
   };
 
   return (
-    <div className={style['sort']}>
-      <div className={style['sort__label']}>
+    <div className={style['container']}>
+      <div className={style['label']}>
         <svg
-          className={style['sort__img']}
+          className={style['img']}
           width='10'
           height='6'
           viewBox='0 0 10 6'
@@ -27,9 +27,9 @@ function Sort({ valueId, onClickSorting }) {
             fill='#2C2C2C'
           />
         </svg>
-        <span className={style['sort__text-bold']}>Сортировка по:</span>
+        <span className={style['text-bold']}>Сортировка по:</span>
         <span
-          className={style['sort__text-normal']}
+          className={style['text-normal']}
           onClick={() => {
             setOpen(!open);
           }}
@@ -38,8 +38,8 @@ function Sort({ valueId, onClickSorting }) {
         </span>
       </div>
       {open && (
-        <div className={style['sort__popup']}>
-          <ul className={style['sort__list']}>
+        <div className={style['popup']}>
+          <ul className={style['list']}>
             {listOfNamesOfSortingElements.map((item, index) => {
               return (
                 <li
@@ -48,7 +48,7 @@ function Sort({ valueId, onClickSorting }) {
                     onClickSelectAnItem(index);
                   }}
                   className={`${valueId === index ? style['active'] : ''} ${
-                    style['sort__list-item']
+                    style['list-item']
                   }
                 `}
                 >

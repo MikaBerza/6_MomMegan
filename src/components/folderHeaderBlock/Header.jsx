@@ -8,7 +8,7 @@ import mLogo from '../../assets/img/M-logo.png';
 function Header() {
   // console.log(style);
   return (
-    <header className={style['heading']}>
+    <>
       <div className={style['label']}>
         <Link className={style['label__link']} to='/'>
           <div className={style['label__images']}>
@@ -54,7 +54,7 @@ function Header() {
           <span className={style['basket__counter']}>3</span>
         </Link>
       </div>
-    </header>
+    </>
   );
 }
 

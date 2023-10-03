@@ -1,14 +1,13 @@
-.product-card {
+.card {
   width: 100%;
-  margin-bottom: 65px;
   text-align: center;
 }
 
-.product-card__image {
+.card__image {
   width: 200px;
 }
 
-.product-card__title {
+.card__title {
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: 900;
@@ -16,7 +15,7 @@
   color: #b8860b;
 }
 
-.product-card__selector {
+.card__selector {
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -28,18 +27,18 @@
   border-radius: 10px;
 }
 
-.product-card__list {
+.card__list {
   display: flex;
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.product-card__list:first-of-type {
+.card__list:first-of-type {
   margin-bottom: 6px
 }
 
-.product-card__list-item {
+.card__list-item {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -62,7 +61,7 @@
   cursor: auto;
 }
 
-.product-card__footer {
+.card__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -70,7 +69,7 @@
 
 }
 
-.product-card__price {
+.card__price {
   font-size: 22px;
   font-weight: 700;
   line-height: 27px;
@@ -78,7 +77,7 @@
   color: #b8860b;
 }
 
-.product-card__button {
+.card__button {
   display: flex;
   align-items: center;
   flex-wrap: wrap-reverse;
@@ -91,36 +90,36 @@
   cursor: pointer;
 }
 
-.product-card__button-icon path {
+.card__button-icon path {
   width: 20px;
   fill: #b8860b;
 }
 
-.product-card__button-name {
+.card__button-name {
   padding: 0 3px;
   font-size: 14px;
   color: #b8860b;
 }
 
-.product-card__counter {
+.card__counter {
   font-size: 14px;
   color: #b8860b;
 }
 
-.product-card__button:hover {
+.card__button:hover {
   background-color: #f4f4f4;
 }
 
-.product-card__button:active {
+.card__button:active {
   background-color: #b8860b;
   transform: translateY(2px);
 }
 
-.product-card__button:active>.product-card__button-icon path {
+.card__button:active>.card__button-icon path {
   fill: #f9f9f9;
 }
 
-.product-card__button:active>.product-card__button-name,
-.product-card__button:active>.product-card__counter {
+.card__button:active>.card__button-name,
+.card__button:active>.card__counter {
   color: #f9f9f9;
 }
