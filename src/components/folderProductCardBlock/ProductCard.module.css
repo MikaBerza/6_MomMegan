@@ -71,25 +71,23 @@
 }
 
 .product-card__price {
-  color: #b8860b;
   font-size: 22px;
   font-weight: 700;
   line-height: 27px;
-  letter-spacing: 0.015em
+  letter-spacing: 0.015em;
+  color: #b8860b;
 }
 
 .product-card__button {
   display: flex;
-  flex-wrap: wrap-reverse;
   align-items: center;
+  flex-wrap: wrap-reverse;
   padding: 6px;
   background-color: #f9f9f9;
   border: 1px solid #b8860b;
   border-radius: 4px;
-
   /* свойства для эффекта смещения */
   transition: transform 0.2s;
-
   cursor: pointer;
 }
 
@@ -100,13 +98,13 @@
 
 .product-card__button-name {
   padding: 0 3px;
-  color: #b8860b;
   font-size: 14px;
+  color: #b8860b;
 }
 
 .product-card__counter {
-  color: #b8860b;
   font-size: 14px;
+  color: #b8860b;
 }
 
 .product-card__button:hover {
