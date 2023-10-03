@@ -101,7 +101,8 @@ a {
   max-width: 1920px;
   height: 100%;
   margin: 50px auto;
-  padding: 0 100px;
+  padding: 20px 100px 40px;
+  text-align: center;
   background-color: white;
   border-radius: 10px;
 }
@@ -890,9 +891,14 @@ body {
   font-weight: 600;
 }
 
+.not-found {
+  height: 70vh;
+  padding-top: 20vh;
+}
+
 @media (max-width: 1490px) {
   .wrapper {
-    padding: 0 20px;
+    padding: 0 20px 20px;
   }
 
   .filtering-and-sorting {

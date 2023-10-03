@@ -1,9 +1,13 @@
 import React from 'react';
 //
-import NoteFoundBlock from '../folderNotFoundBlock/NoteFoundBlock'
+import NotFoundBlock from '../folderNotFoundBlock/NotFoundBlock';
 
 function NotFoundPage() {
-  return <NoteFoundBlock />;
+  return (
+    <section className={'not-found'}>
+      <NotFoundBlock />
+    </section>
+  );
 }
 
 export default NotFoundPage;
