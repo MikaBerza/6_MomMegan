@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin: auto;
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid var(--light-gray7);
 }
 
 .product {
