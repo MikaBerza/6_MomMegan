@@ -2,6 +2,7 @@ import React from 'react';
 
 import Sort from '../folderSortBlock/Sort';
 import Filtering from '../folderFilteringBlock/Filtering';
+import MainTitle from '../folderMainTitle/MainTitle';
 import ProductCard from '../folderProductCardBlock/ProductCard';
 import ProductCardSkeleton from '../folderProductCardBlock/ProductCardSkeleton';
 
@@ -48,9 +49,7 @@ function HomePage() {
         <Sort valueId={sortId} onClickSorting={setSortId} />
       </section>
 
-      <section className='main-title'>
-        <h1 className='main-title__item'>Товары</h1>
-      </section>
+      <MainTitle titleName='Товары' />
 
       <section className='product-gallery'>
         {isLoading

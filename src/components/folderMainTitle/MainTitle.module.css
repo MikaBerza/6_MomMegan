@@ -1,0 +1,8 @@
+.title {
+  text-align: center;
+}
+
+.title-item {
+  padding: 40px 0;
+  color: var(--dark-goldenrod1);
+}

@@ -66,6 +66,7 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
+  padding: 0 6px;
 
 }
 
@@ -77,31 +78,33 @@
   color: var(--dark-goldenrod1);
 }
 
-.card__button {
+/* .card__button {
   display: flex;
   align-items: center;
   flex-wrap: wrap-reverse;
   padding: 6px;
-  background-color:  var(--light-gray1);
+  background-color: var(--light-gray1);
   border: 1px solid var(--dark-goldenrod1);
   border-radius: 4px;
-  /* свойства для эффекта смещения */
-  transition: transform 0.2s;
+  transition: background-color .2s ease, transform 0.2s;
   cursor: pointer;
-}
+} */
 
-.card__button-icon path {
-  width: 20px;
+/* .card__button-icon {
+  width: 12px;
+} */
+
+/* .card__button-icon path {
   fill: var(--dark-goldenrod1);
-}
+} */
 
-.card__button-name {
+/* .card__button-name {
   padding: 0 3px;
   font-size: 14px;
   color: var(--dark-goldenrod1);
-}
+} */
 
-.card__counter {
+/* .card__counter {
   font-size: 14px;
   color: var(--dark-goldenrod1);
 }
@@ -116,10 +119,10 @@
 }
 
 .card__button:active>.card__button-icon path {
-  fill:  var(--light-gray1);
+  fill: var(--light-gray1);
 }
 
 .card__button:active>.card__button-name,
 .card__button:active>.card__counter {
-  color:  var(--light-gray1);
-}
+  color: var(--light-gray1);
+} */
