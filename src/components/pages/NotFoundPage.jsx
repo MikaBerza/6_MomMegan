@@ -1,6 +1,6 @@
 import React from 'react';
 //
-import NotFoundBlock from '../folderNotFoundBlock/NotFoundBlock';
+import NotFoundBlock from '../folderNotFound/NotFoundBlock';
 
 function NotFoundPage() {
   return (

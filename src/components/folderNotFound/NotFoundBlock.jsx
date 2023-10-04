@@ -5,7 +5,7 @@ function NotFoundBlock() {
   return (
     <>
       <span className={style['emoji']} role='img' aria-label='emoji'>
-        &#128579;
+        &#10071;
       </span>
       <h1 className={style['title']}>Ничего не найдено</h1>
       <p className={style['description']}>К сожалению данные отсутствуют</p>

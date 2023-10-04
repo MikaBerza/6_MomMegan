@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Sort from '../folderSortBlock/Sort';
-import Filtering from '../folderFilteringBlock/Filtering';
+import Filtering from '../folderFiltering/Filtering';
 import MainTitle from '../folderMainTitle/MainTitle';
-import ProductCard from '../folderProductCardBlock/ProductCard';
-import ProductCardSkeleton from '../folderProductCardBlock/ProductCardSkeleton';
+import ProductCard from '../folderProductCard/ProductCard';
+import ProductCardSkeleton from '../folderProductCard/ProductCardSkeleton';
 
 import { getFilteredData } from '../../modules/modules';
 
