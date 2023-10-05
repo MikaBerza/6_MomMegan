@@ -29,11 +29,14 @@
 }
 
 .bg-rating-v1 {
+  opacity: 0.4;
   color: green;
 }
 
 .bg-rating-v2 {
+  opacity: 0.4;
   color: red;
+
 }
 
 .card__title-stars {
@@ -43,10 +46,12 @@
 }
 
 .bg-stars-v1 {
+  opacity: 0.4;
   fill: green;
 }
 
 .bg-stars-v2 {
+  opacity: 0.4;
   fill: red;
 }
 
