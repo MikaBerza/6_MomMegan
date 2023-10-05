@@ -9,12 +9,12 @@ function ButtonGroup() {
       <Link to='/' className={style['link']}>
         <Button
           nameBtn={'Вернуться назад'}
-          nameStyle={['button_v1', 'button-icon_v4', 'button-name_v1']}
+          nameStyle={['button_v5', 'button-icon_v4', 'button-name_v1']}
         />
       </Link>
       <Button
         nameBtn={'Оплатить сейчас'}
-        nameStyle={['button_v1', 'button-icon_v5', 'button-name_v1']}
+        nameStyle={['button_v5', 'button-icon_v5', 'button-name_v1']}
       />
     </div>
   );

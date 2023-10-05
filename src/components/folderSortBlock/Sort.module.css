@@ -60,3 +60,11 @@
   font-weight: bold;
   color: var(--black1)
 }
+
+@media (max-width: 390px) {
+
+  .text-bold,
+  .text-normal {
+    font-size: 15px;
+  }
+}

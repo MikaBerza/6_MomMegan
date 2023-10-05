@@ -42,10 +42,10 @@
   --dark-gray2: #282828;
   --dark-gray3: #111;
   --dark-gray4: #181818;
-  --dark-goldenrod1: #b8860b;
   --gray1: #8d8d8d;
   --gray2: #777777;
   --gray3: #7b7b7b;
+  --gray4: #444;
   --black1: #000000;
 
 }
@@ -54,7 +54,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  font-family: 'Proxima Nova', Roboto, system-ui, Tahoma, sans-serif;
+  font-family: 'Lucida Console', 'Proxima Nova', Roboto, system-ui, Tahoma, sans-serif;
   outline: none;
   -webkit-box-sizing: border-box;
   box-sizing: border-box
@@ -129,15 +129,17 @@ a {
   padding-top: 20vh;
 }
 
-
-@media (max-width: 1490px) {
-  .wrapper {
-    padding: 0 20px 20px;
-  }
-
+@media (max-width: 1640px) {
   .filtering-and-sorting {
     flex-direction: column-reverse;
     justify-content: center;
+  }
+}
+
+
+@media (max-width: 1500px) {
+  .wrapper {
+    padding: 0 20px 20px;
   }
 
   .product-gallery {

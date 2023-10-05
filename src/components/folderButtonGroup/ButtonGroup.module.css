@@ -8,11 +8,11 @@
   display: contents;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   .wrapper {
     flex-direction: column-reverse;
-    max-width: 200px;
+    max-width: 210px;
     height: 150px;
-    margin: auto;
+    margin: 40px auto 0;
   }
 }
