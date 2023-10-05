@@ -14,7 +14,7 @@ function HomePage({ searchValue, setSearchValue }) {
   const [sortId, setSortId] = React.useState(0);
   const [initialProductData, setInitialProductData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  // создадим массив для отображения скелетона пиц (он будет заполнен 10шт undefined)
+  // создадим массив для отображения скелетона (он будет заполнен undefined)
   const arrayForSkeleton = [...new Array(15)];
 
   /* Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !

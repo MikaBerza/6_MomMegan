@@ -8,11 +8,46 @@
 }
 
 .card__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
+}
+
+.card__title-text {
+  padding-right: 10px;
   font-size: 20px;
   font-weight: 900;
   letter-spacing: 1%;
   color: var(--dark-goldenrod1);
+}
+
+.card__title-rating {
+  height: 25px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.bg-rating-v1 {
+  color: green;
+}
+
+.bg-rating-v2 {
+  color: red;
+}
+
+.card__title-stars {
+  width: 25px;
+  height: 25px;
+  padding-right: 2px;
+}
+
+.bg-stars-v1 {
+  fill: green;
+}
+
+.bg-stars-v2 {
+  fill: red;
 }
 
 .card__selector {
