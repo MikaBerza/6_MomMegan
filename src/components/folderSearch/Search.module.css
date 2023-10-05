@@ -1,12 +1,13 @@
 .wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 80%;
+  margin: auto;
   padding-top: 40px;
 }
 
 .input {
-  width: 80%;
+  position: relative;
+  z-index: 1;
+  width: 100%;
   padding: 20px 50px;
   font-size: 20px;
   background-color: var(--light-gray1);
@@ -14,21 +15,22 @@
   border-radius: 10px;
 }
 
-
 .input:hover {
   background-color: var(--light-gray2);
 }
 
 .iconSearch {
-  position: relative;
-  left: 43px;
+  position: absolute;
+  z-index: 2;
   width: 30px;
   height: 30px;
+  margin-top: 17px;
+  margin-left: 14px;
   opacity: 0.3;
 }
 
 @media (max-width: 670px) {
-  .input {
+  .wrapper {
     width: 100%;
   }
 }

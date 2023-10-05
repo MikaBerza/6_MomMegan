@@ -3,7 +3,7 @@ import React from 'react';
 import Sort from '../folderSortBlock/Sort';
 import Filtering from '../folderFiltering/Filtering';
 import MainTitle from '../folderMainTitle/MainTitle';
-import Search from '../folderSearch/Search';
+// import Search from '../folderSearch/Search';
 import ProductCard from '../folderProductCard/ProductCard';
 import ProductCardSkeleton from '../folderProductCard/ProductCardSkeleton';
 
@@ -45,7 +45,7 @@ function HomePage() {
 
   return (
     <>
-      <Search />
+      {/* <Search /> */}
       <section className='filtering-and-sorting'>
         <Filtering valueId={filteringId} onClickFiltering={setFilteringId} />
         <Sort valueId={sortId} onClickSorting={setSortId} />
