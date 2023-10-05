@@ -1,20 +1,18 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/folderHeaderBlock/Header';
+import Header from './components/folderHeader/Header';
+import Search from './components/folderSearch/Search';
 import HomePage from './components/pages/HomePage';
 import CartPage from './components/pages/CartPage';
 import NotFoundPage from './components/pages/NotFoundPage';
-import Search from './components/folderSearch/Search';
 
 import './App.css';
 
 function App() {
   return (
     <div className='wrapper'>
-      <header className='heading'>
-        <Header />
-      </header>
+      <Header />
       <Search />
       <Routes>
         <Route path='/' element={<HomePage />} />

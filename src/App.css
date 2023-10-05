@@ -109,12 +109,6 @@ a {
   border-radius: 10px;
 }
 
-.heading {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
 .product-gallery {
   display: grid;
   justify-items: center;

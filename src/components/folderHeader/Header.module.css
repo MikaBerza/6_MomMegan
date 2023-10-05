@@ -1,3 +1,9 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .label {
   padding-top: 20px;
   padding-right: 7px;
@@ -37,7 +43,7 @@
   height: 100%;
   padding: 15px;
   line-height: 23px;
-  background-color:  var(--light-gray1);
+  background-color: var(--light-gray1);
   border: 1px solid transparent;
   border-radius: 10px;
   cursor: pointer;
@@ -60,7 +66,7 @@
   height: 25px;
   margin-right: 14px;
   margin-left: 14px;
-  background-color:  var(--dark-gray1);
+  background-color: var(--dark-gray1);
 }
 
 .basket-button__images {
