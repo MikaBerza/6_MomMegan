@@ -2,14 +2,14 @@ import React from 'react';
 
 import Sort from '../folderSortBlock/Sort';
 import Filtering from '../folderFiltering/Filtering';
+import Search from '../folderSearch/Search';
 import MainTitle from '../folderMainTitle/MainTitle';
-// import Search from '../folderSearch/Search';
 import ProductCard from '../folderProductCard/ProductCard';
 import ProductCardSkeleton from '../folderProductCard/ProductCardSkeleton';
 
 import { getFilteredData } from '../../modules/modules';
 
-function HomePage() {
+function HomePage({ searchValue, setSearchValue }) {
   const [filteringId, setFilteringId] = React.useState(0);
   const [sortId, setSortId] = React.useState(0);
   const [initialProductData, setInitialProductData] = React.useState([]);
@@ -45,7 +45,7 @@ function HomePage() {
 
   return (
     <>
-      {/* <Search /> */}
+      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <section className='filtering-and-sorting'>
         <Filtering valueId={filteringId} onClickFiltering={setFilteringId} />
         <Sort valueId={sortId} onClickSorting={setSortId} />
