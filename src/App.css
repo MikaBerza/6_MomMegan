@@ -129,26 +129,47 @@ a {
   padding-top: 20vh;
 }
 
+/* 
+___ Эти стили применяю если у сервера превышен лимит по запросам      
+<h4
+  className={
+    category === 1
+      ? `${style['card__title-text']} category1`
+      : category === 2
+      ? `${style['card__title-text']} category2`
+      : category === 3
+      ? `${style['card__title-text']} category3`
+      : category === 4
+      ? `${style['card__title-text']} category4`
+      : category === 5
+      ? `${style['card__title-text']} category5`
+      : ''
+  }>
+  {title}
+  </h4> 
+*/
+
 /* Мужская обувь */
-.category1 {
+/* .category1 {
   color: blue;
-}
+} */
 /* Женская обувь */
-.category2 {
+/* .category2 {
   color: red;
-}
+} */
 /* Детская обувь */
-.category3 {
+/* .category3 {
   color: yellowgreen;
-}
+} */
 /* Головные уборы */
-.category4 {
+/* .category4 {
   color: blueviolet;
-}
+} */
 /* Перчатки */
-.category5 {
+/* .category5 {
   color: orange;
-}
+} */
+/*___ Эти стили применяю если у сервера превышен лимит по запросам */
 
 @media (max-width: 1640px) {
   .filtering-and-sorting {
