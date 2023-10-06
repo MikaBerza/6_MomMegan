@@ -3,7 +3,15 @@ import style from './ProductCard.module.css';
 import Button from '../folderButton/Button';
 import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 
-function ProductCard({ imageUrl, title, types, price, sizes, rating }) {
+function ProductCard({
+  imageUrl,
+  title,
+  types,
+  price,
+  sizes,
+  rating,
+  category,
+}) {
   const [activeDough, setActiveDough] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
 
@@ -11,7 +19,24 @@ function ProductCard({ imageUrl, title, types, price, sizes, rating }) {
     <div className={style['card']}>
       <img className={style['card__image']} src={imageUrl} alt='product' />
       <div className={style['card__title']}>
-        <h4 className={style['card__title-text']}>{title}</h4>
+        {/* потом убрать это условие и оставить только card__title-text */}
+        <h4
+          className={
+            category === 1
+              ? `${style['card__title-text']} category1`
+              : category === 2
+              ? `${style['card__title-text']} category2`
+              : category === 3
+              ? `${style['card__title-text']} category3`
+              : category === 4
+              ? `${style['card__title-text']} category4`
+              : category === 5
+              ? `${style['card__title-text']} category5`
+              : ''
+          }
+        >
+          {title}
+        </h4>
 
         <svg
           className={style['card__title-stars']}

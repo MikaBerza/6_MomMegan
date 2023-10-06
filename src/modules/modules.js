@@ -9,7 +9,7 @@ import {
 function convertAnArrayOfElementsToAnArrayWithIndexes(arr) {
   /* получим все индексы элементов массива в другом массиве, 
   но исходный массив при этом не изменяется */
-  const newArr = arr.map(function(item) {
+  const newArr = arr.map(function (item) {
     return this.indexOf(item);
   }, arr);
   return newArr;
@@ -18,17 +18,19 @@ function convertAnArrayOfElementsToAnArrayWithIndexes(arr) {
 export function getSortedData(productData, sortingNumber) {
   // Создаем копию исходного массива
   const copyDataArray = [...productData];
-  // Выбираем метод сортировки в зависимости от sortingNumber
-  let sortFunction;
+
   // запишем в константы индексы элементов из списка сортировки
   const rating = listOfNamesOfSortingElements.indexOf('популярности');
   const price = listOfNamesOfSortingElements.indexOf('цене');
   const alphabet = listOfNamesOfSortingElements.indexOf('алфавиту');
 
+  // Выбираем метод сортировки в зависимости от sortingNumber, а пока
+  // объявим переменную и присвоили ей значение null
+  let sortFunction = null;
   if (sortingNumber === alphabet) {
     // Для правильной сортировки слов по русскому алфавиту используем метод localeCompare()
-    // с использованием правил локали для русского языка "ru"
-    sortFunction = (a, b) => a['title'].localeCompare(b['title'], 'ru');
+    // с использованием правил локали для англ.яз "en"
+    sortFunction = (a, b) => a['title'].localeCompare(b['title'], 'en');
   } else if (sortingNumber === price) {
     // Для сортировки по числовым свойствам (price)
     sortFunction = (a, b) => a['price'] - b['price'];
@@ -41,7 +43,13 @@ export function getSortedData(productData, sortingNumber) {
 }
 
 // функция, получить отфильтрованный массив по (категориям(category))
-export function getFilteredData(
+export function getFilteredData(productData, categoryNumber) {
+  // Отфильтруем массив по категориям (categoryNumber) и вернем его
+  return productData.filter((item) => item.category === categoryNumber);
+}
+
+// функция, получить отсортированный и отфильтрованный массив
+export function getSortedAndFilteredData(
   productData,
   sortingNumber,
   categoryNumber
@@ -54,29 +62,34 @@ export function getFilteredData(
   const validFilterProperties = convertAnArrayOfElementsToAnArrayWithIndexes(
     listOfFilteringItemNames
   );
-  // Проверяем, является ли sortingNumber и categoryNumber допустимым свойством для сортировки
+  // Проверяем, является ли sortingNumber и categoryNumber допустимым свойством для сортировки и фильтрации
   if (!validSortProperties.includes(sortingNumber)) {
     return 'Указан неверный параметр функции sortingNumber (Invalid function parameter sortingNumber specified)';
   } else if (!validFilterProperties.includes(categoryNumber)) {
     return 'Указан неверный параметр функции categoryNumber (Invalid function parameter categoryNumber specified)';
   }
-  // Отсортировать массив по заданному свойству (sortingNumber)
+
+  // Отсортировать массив по выбранному свойству (sortingNumber)
   const sortedArray = getSortedData(productData, sortingNumber);
   // если выбрана категория "Все", то возвращаем отсортированный массив
   if (categoryNumber === 0) {
     return sortedArray;
   }
   // Фильтровать отсортированный массив по категории (categoryNumber)
-  const filteredArray = sortedArray.filter(
-    (item) => item.category === categoryNumber
-  );
-  // сделаем проверку
-  if (filteredArray.length === 0) {
-    // вернем null если отфильтрованный по категориям массив пуст
-    return null;
-  } else {
-    // вернем отфильтрованный по категориям массив
-    return filteredArray;
-  }
+  const filteredAndSortedArray = getFilteredData(sortedArray, categoryNumber);
+  // вернем отфильтрованный по категориям и отсортированный массив массив
+  return filteredAndSortedArray;
+}
+
+// функция, получить отфильтрованные данные по введенным значениям в input
+export function getFilteredDataByEnteredValues(arrData, inputValue) {
+  const newArr = arrData.filter((obj) => {
+    if (obj.title.toUpperCase().includes(inputValue.toUpperCase())) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return newArr;
 }
 /*______________________________________________________________________________________________*/

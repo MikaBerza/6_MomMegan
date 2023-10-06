@@ -129,6 +129,27 @@ a {
   padding-top: 20vh;
 }
 
+/* Мужская обувь */
+.category1 {
+  color: blue;
+}
+/* Женская обувь */
+.category2 {
+  color: red;
+}
+/* Детская обувь */
+.category3 {
+  color: yellowgreen;
+}
+/* Головные уборы */
+.category4 {
+  color: blueviolet;
+}
+/* Перчатки */
+.category5 {
+  color: orange;
+}
+
 @media (max-width: 1640px) {
   .filtering-and-sorting {
     flex-direction: column-reverse;

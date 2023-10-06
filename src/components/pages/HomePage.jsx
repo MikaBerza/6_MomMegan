@@ -7,7 +7,10 @@ import MainTitle from '../folderMainTitle/MainTitle';
 import ProductCard from '../folderProductCard/ProductCard';
 import ProductCardSkeleton from '../folderProductCard/ProductCardSkeleton';
 
-import { getFilteredData } from '../../modules/modules';
+import {
+  getSortedAndFilteredData,
+  getFilteredDataByEnteredValues,
+} from '../../modules/modules';
 
 function HomePage({ searchValue, setSearchValue }) {
   const [filteringId, setFilteringId] = React.useState(0);
@@ -15,7 +18,7 @@ function HomePage({ searchValue, setSearchValue }) {
   const [initialProductData, setInitialProductData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   // создадим массив для отображения скелетона (он будет заполнен undefined)
-  const arrayForSkeleton = [...new Array(15)];
+  const arrayForSkeleton = [...new Array(20)];
 
   /* Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !
   Подробнее:
@@ -43,6 +46,18 @@ function HomePage({ searchValue, setSearchValue }) {
     window.scrollTo(0, 0);
   }, []);
 
+  // карточки товаров
+  const productsCards = getFilteredDataByEnteredValues(
+    getSortedAndFilteredData(initialProductData, sortId, filteringId),
+    searchValue
+  ).map((obj, index) => {
+    return <ProductCard key={obj.id} {...obj} />;
+  });
+  // карточки заменители
+  const substituteCards = arrayForSkeleton.map((item, index) => {
+    return <ProductCardSkeleton key={index} />;
+  });
+
   return (
     <>
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
@@ -54,15 +69,7 @@ function HomePage({ searchValue, setSearchValue }) {
       <MainTitle titleName='Товары' />
 
       <section className='product-gallery'>
-        {isLoading
-          ? arrayForSkeleton.map((item, index) => {
-              return <ProductCardSkeleton key={index} />;
-            })
-          : getFilteredData(initialProductData, sortId, filteringId).map(
-              (obj) => {
-                return <ProductCard key={obj.id} {...obj} />;
-              }
-            )}
+        {isLoading === true ? substituteCards : productsCards}
       </section>
     </>
   );
