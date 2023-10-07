@@ -6,10 +6,13 @@ import Search from '../folderSearch/Search';
 import MainTitle from '../folderMainTitle/MainTitle';
 import ProductCard from '../folderProductCard/ProductCard';
 import ProductCardSkeleton from '../folderProductCard/ProductCardSkeleton';
+import Pagination from '../folderPagination/Pagination';
+import PaginationSkeleton from '../folderPagination/PaginationSkeleton';
 
 import {
   getSortedAndFilteredData,
   getFilteredDataByEnteredValues,
+  getSliceOfTheArray,
 } from '../../modules/modules';
 
 function HomePage({ searchValue, setSearchValue }) {
@@ -17,9 +20,14 @@ function HomePage({ searchValue, setSearchValue }) {
   const [sortId, setSortId] = React.useState(0);
   const [initialProductData, setInitialProductData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+
+  const [numberOfCardsPerPage] = React.useState(8);
+  const [currentPage, setCurrentPage] = React.useState(0);
+
   // создадим массив для отображения скелетона (он будет заполнен undefined)
   const arrayForSkeleton = [...new Array(20)];
 
+  console.log(currentPage, 'Индекс текущей страницы');
   /* Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !
   Подробнее:
   Когда компонент первоначально монтируется, `useEffect()` запускает асинхронный вызов `fetch()'
@@ -69,7 +77,30 @@ function HomePage({ searchValue, setSearchValue }) {
       <MainTitle titleName='Товары' />
 
       <section className='product-gallery'>
-        {isLoading === true ? substituteCards : productsCards}
+        {isLoading === true
+          ? getSliceOfTheArray(
+              substituteCards,
+              currentPage,
+              numberOfCardsPerPage
+            )
+          : getSliceOfTheArray(
+              productsCards,
+              currentPage,
+              numberOfCardsPerPage
+            )}
+      </section>
+
+      <section className='pagination'>
+        {isLoading === true ? (
+          <PaginationSkeleton />
+        ) : (
+          <Pagination
+            initialProductData={initialProductData}
+            numberOfCardsPerPage={numberOfCardsPerPage}
+            valueCurrentId={currentPage}
+            onClickGoToPage={setCurrentPage}
+          />
+        )}
       </section>
     </>
   );

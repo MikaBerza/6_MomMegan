@@ -93,3 +93,25 @@ export function getFilteredDataByEnteredValues(arrData, inputValue) {
   return newArr;
 }
 /*______________________________________________________________________________________________*/
+
+// функция, получить массив с номерами страниц
+export const getAnArrayWithPageNumbers = (arrData, numberOfProducts) => {
+  let newArr = [];
+  // количество страниц
+  const numberOfPages = Math.ceil(arrData.length / numberOfProducts);
+  for (let i = 1; i < numberOfPages + 1; i++) {
+    newArr.push(i);
+  }
+  return newArr;
+};
+
+// функция, получить фрагмент массива
+export const getSliceOfTheArray = (
+  arrData,
+  currentIndex,
+  numberOfElementsPerPage
+) => {
+  const begin = currentIndex * numberOfElementsPerPage;
+  const end = begin + numberOfElementsPerPage;
+  return arrData.slice(begin, end);
+};
