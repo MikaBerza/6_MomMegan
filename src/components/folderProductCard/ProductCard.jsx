@@ -3,16 +3,8 @@ import style from './ProductCard.module.css';
 import Button from '../folderButton/Button';
 import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 
-function ProductCard({
-  imageUrl,
-  title,
-  types,
-  price,
-  sizes,
-  rating,
-  category,
-}) {
-  const [activeDough, setActiveDough] = React.useState(0);
+function ProductCard({ imageUrl, title, types, price, sizes, rating }) {
+  const [activeSeason, setActiveSeason] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
 
   return (
@@ -37,8 +29,8 @@ function ProductCard({
             return (
               <li
                 key={index}
-                onClick={() => setActiveDough(index)}
-                className={`${activeDough === index ? style.active : ''} ${
+                onClick={() => setActiveSeason(index)}
+                className={`${activeSeason === index ? style.active : ''} ${
                   style['card__list-item']
                 }`}
               >
@@ -48,7 +40,7 @@ function ProductCard({
           })}
         </ul>
         <ul className={style['card__list']}>
-          {sizes.map((size, index) => {
+          {sizes.map((item, index) => {
             return (
               <li
                 key={index}
@@ -57,7 +49,7 @@ function ProductCard({
                   style['card__list-item']
                 }`}
               >
-                {size}
+                {item}
               </li>
             );
           })}

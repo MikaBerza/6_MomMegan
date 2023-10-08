@@ -27,7 +27,6 @@ function HomePage({ searchValue, setSearchValue }) {
   // создадим массив для отображения скелетона (он будет заполнен undefined)
   const arrayForSkeleton = [...new Array(20)];
 
-  console.log(currentPage, 'Индекс текущей страницы');
   /* Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !
   Подробнее:
   Когда компонент первоначально монтируется, `useEffect()` запускает асинхронный вызов `fetch()'
