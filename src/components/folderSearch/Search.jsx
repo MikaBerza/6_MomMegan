@@ -1,7 +1,11 @@
 import React from 'react';
 import style from './Search.module.css';
-//
-function Search({ searchValue, setSearchValue }) {
+
+import { AppContext } from '../../App';
+
+function Search() {
+  const { searchValue, setSearchValue } = React.useContext(AppContext);
+
   return (
     <section className={style['wrapper']}>
       <svg className={style['icon-search']} viewBox='0 0 32 32' version='1.1'>

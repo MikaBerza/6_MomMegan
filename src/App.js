@@ -12,30 +12,17 @@ function App() {
   const [searchValue, setSearchValue] = React.useState('');
   return (
     <div className='wrapper'>
-      <Header />
-      <Routes>
-        <Route
-          path='/'
-          element={
-            <HomePage
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-            />
-          }
-        />
-        <Route
-          path='/cart'
-          element={
-            <CartPage
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-            />
-          }
-        />
-        <Route path='*' element={<NotFoundPage />} />
-      </Routes>
+      <AppContext.Provider value={{ searchValue, setSearchValue }}>
+        <Header />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/cart' element={<CartPage />} />
+          <Route path='*' element={<NotFoundPage />} />
+        </Routes>
+      </AppContext.Provider>
     </div>
   );
 }
 
+export const AppContext = React.createContext();
 export default App;

@@ -1,15 +1,12 @@
 import React from 'react';
-import Search from '../folderSearch/Search';
 import MainTitle from '../folderMainTitle/MainTitle';
 import CartCard from '../folderCartCard/CartCard';
 import OrderResult from '../folderOrderResult/OrderResult';
 import ButtonGroup from '../folderButtonGroup/ButtonGroup';
 
-//
-function CartPage({ searchValue, setSearchValue }) {
+function CartPage() {
   return (
     <>
-      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <MainTitle titleName='Корзина' />
       <CartCard />
       <CartCard />

@@ -15,7 +15,11 @@ import {
   getSliceOfTheArray,
 } from '../../modules/modules';
 
-function HomePage({ searchValue, setSearchValue }) {
+import { AppContext } from '../../App';
+
+function HomePage() {
+  const { searchValue } = React.useContext(AppContext);
+
   const [filteringId, setFilteringId] = React.useState(0);
   const [sortId, setSortId] = React.useState(0);
   const [initialProductData, setInitialProductData] = React.useState([]);
@@ -67,7 +71,7 @@ function HomePage({ searchValue, setSearchValue }) {
 
   return (
     <>
-      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+      <Search />
       <section className='filtering-and-sorting'>
         <Filtering valueId={filteringId} onClickFiltering={setFilteringId} />
         <Sort valueId={sortId} onClickSorting={setSortId} />
