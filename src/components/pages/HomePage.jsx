@@ -1,5 +1,11 @@
 import React from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  setFilteringId,
+  setSortId,
+} from '../../redux/slices/sortingAndFilteringSlice';
+
 import Sort from '../folderSortBlock/Sort';
 import Filtering from '../folderFiltering/Filtering';
 import Search from '../folderSearch/Search';
@@ -18,10 +24,25 @@ import {
 import { AppContext } from '../../App';
 
 function HomePage() {
-  const { searchValue } = React.useContext(AppContext);
+  const dispatch = useDispatch();
+  const filteringId = useSelector(
+    (state) => state.sortingAndFilteringSlice.filteringId
+  );
+  const sortId = useSelector((state) => state.sortingAndFilteringSlice.sortId);
 
-  const [filteringId, setFilteringId] = React.useState(0);
-  const [sortId, setSortId] = React.useState(0);
+  console.log('filteringId', filteringId);
+  const handleOnClickFiltering = (index) => {
+    dispatch(setFilteringId(index));
+  };
+
+  console.log('sortId', sortId);
+  const handleOnClickSort = (index) => {
+    dispatch(setSortId(index));
+  };
+
+  const { searchValue } = React.useContext(AppContext);
+  // const [filteringId, setFilteringId] = React.useState(0);
+  // const [sortId, setSortId] = React.useState(0);
   const [initialProductData, setInitialProductData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -73,8 +94,11 @@ function HomePage() {
     <>
       <Search />
       <section className='filtering-and-sorting'>
-        <Filtering valueId={filteringId} onClickFiltering={setFilteringId} />
-        <Sort valueId={sortId} onClickSorting={setSortId} />
+        <Filtering
+          valueId={filteringId}
+          onClickFiltering={handleOnClickFiltering}
+        />
+        <Sort valueId={sortId} onClickSorting={handleOnClickSort} />
       </section>
 
       <MainTitle titleName='Товары' />
