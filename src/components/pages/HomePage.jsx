@@ -6,7 +6,7 @@ import {
   setSortId,
 } from '../../redux/slices/sortingAndFilteringSlice';
 
-import Sort from '../folderSortBlock/Sort';
+import Sort from '../folderSort/Sort';
 import Filtering from '../folderFiltering/Filtering';
 import Search from '../folderSearch/Search';
 import MainTitle from '../folderMainTitle/MainTitle';
@@ -30,12 +30,10 @@ function HomePage() {
   );
   const sortId = useSelector((state) => state.sortingAndFilteringSlice.sortId);
 
-  console.log('filteringId', filteringId);
   const handleOnClickFiltering = (index) => {
     dispatch(setFilteringId(index));
   };
 
-  console.log('sortId', sortId);
   const handleOnClickSort = (index) => {
     dispatch(setSortId(index));
   };
