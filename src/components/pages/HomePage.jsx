@@ -1,10 +1,6 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  setFilteringId,
-  setSortId,
-} from '../../redux/slices/sortingAndFilteringSlice';
+import { useSelector } from 'react-redux';
 
 import Sort from '../folderSort/Sort';
 import Filtering from '../folderFiltering/Filtering';
@@ -24,26 +20,16 @@ import {
 import { AppContext } from '../../App';
 
 function HomePage() {
-  const dispatch = useDispatch();
-  const filteringId = useSelector(
-    (state) => state.sortingAndFilteringSlice.filteringId
+  /* используем хук useSelector из библиотеки Redux 
+     для получения значений filteringId и sortId из состояния,
+     с помощью селектора sortingAndFilteringSlice */
+  const { filteringId, sortId } = useSelector(
+    (state) => state.sortingAndFilteringSlice
   );
-  const sortId = useSelector((state) => state.sortingAndFilteringSlice.sortId);
-
-  const handleOnClickFiltering = (index) => {
-    dispatch(setFilteringId(index));
-  };
-
-  const handleOnClickSort = (index) => {
-    dispatch(setSortId(index));
-  };
 
   const { searchValue } = React.useContext(AppContext);
-  // const [filteringId, setFilteringId] = React.useState(0);
-  // const [sortId, setSortId] = React.useState(0);
   const [initialProductData, setInitialProductData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-
   const [numberOfCardsPerPage] = React.useState(8);
   const [currentPage, setCurrentPage] = React.useState(0);
 
@@ -92,11 +78,8 @@ function HomePage() {
     <>
       <Search />
       <section className='filtering-and-sorting'>
-        <Filtering
-          valueId={filteringId}
-          onClickFiltering={handleOnClickFiltering}
-        />
-        <Sort valueId={sortId} onClickSorting={handleOnClickSort} />
+        <Filtering valueId={filteringId} />
+        <Sort valueId={sortId} />
       </section>
 
       <MainTitle titleName='Товары' />

@@ -1,11 +1,19 @@
 import React from 'react';
+
+import { useDispatch } from 'react-redux';
+import { setSortId } from '../../redux/slices/sortingAndFilteringSlice';
+
 import style from './Sort.module.css';
 import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
 
-function Sort({ valueId, onClickSorting }) {
-  const [open, setOpen] = React.useState(false);
-  const searchItemName = listOfNamesOfSortingElements[valueId];
+function Sort({ valueId }) {
+  const dispatch = useDispatch();
+  const onClickSorting = (index) => {
+    dispatch(setSortId(index));
+  };
 
+  const searchItemName = listOfNamesOfSortingElements[valueId];
+  const [open, setOpen] = React.useState(false);
   const onClickSelectAnItem = (index) => {
     onClickSorting(index);
     setOpen(false);
