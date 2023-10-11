@@ -8,6 +8,11 @@ import NotFoundPage from './components/pages/NotFoundPage';
 
 import './App.css';
 
+/* Создаем контекст React с именем "AppContext". 
+Контекст позволяет передавать данные через дерево 
+компонентов React без явной передачи пропсов между каждым уровнем */
+export const AppContext = React.createContext();
+
 function App() {
   const [searchValue, setSearchValue] = React.useState('');
   return (
@@ -24,5 +29,4 @@ function App() {
   );
 }
 
-export const AppContext = React.createContext();
 export default App;

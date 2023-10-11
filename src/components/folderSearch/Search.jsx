@@ -5,6 +5,15 @@ import { AppContext } from '../../App';
 
 function Search() {
   const { searchValue, setSearchValue } = React.useContext(AppContext);
+  /* Используем хук useRef из библиотеки React для создания ссылки на DOM-элемент.
+  Чтобы обратиться к DOM элементу через React */
+  const inputRef = React.useRef();
+
+  // функция, по щелчку мыши очистить и добавить фокус
+  const onClickClearAndAddFocus = () => {
+    setSearchValue('');
+    inputRef.current.focus();
+  };
 
   return (
     <section className={style['wrapper']}>
@@ -13,6 +22,7 @@ function Search() {
       </svg>
       <input
         className={style['input']}
+        ref={inputRef}
         // с помощью value и onChange сделали компонент Search контролируемым
         value={searchValue}
         onChange={(event) => setSearchValue(event.target.value)}
@@ -24,7 +34,7 @@ function Search() {
       {searchValue ? (
         <svg
           className={style['icon-clear']}
-          onClick={() => setSearchValue('')}
+          onClick={onClickClearAndAddFocus}
           version='1.1'
           viewBox='0 0 24 24'
         >
