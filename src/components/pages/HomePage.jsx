@@ -61,7 +61,8 @@ function HomePage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // получаем отфильтрованные и отсортированные данные по введенным значениям
+  /* получаем отфильтрованные и отсортированные данные
+  по указанным параметрам и по введенным значениям */
   const productsCards = getFilteredDataByEnteredValues(
     getSortedAndFilteredData(initialProductData, sortId, filteringId),
     searchValue
