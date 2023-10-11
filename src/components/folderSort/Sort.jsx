@@ -2,25 +2,52 @@ import React from 'react';
 
 import { useDispatch } from 'react-redux';
 import { setSortId } from '../../redux/slices/sortingAndFilteringSlice';
+import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
 
 import style from './Sort.module.css';
-import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
 
 function Sort({ valueId }) {
   const dispatch = useDispatch();
   const onClickSorting = (index) => {
     dispatch(setSortId(index));
   };
-
   const searchItemName = listOfNamesOfSortingElements[valueId];
   const [open, setOpen] = React.useState(false);
+  /* Используем хук useRef из библиотеки React для создания ссылки на DOM-элемент.
+  Чтобы обратиться к DOM элементу через React */
+  const sortRef = React.useRef();
+
   const onClickSelectAnItem = (index) => {
     onClickSorting(index);
     setOpen(false);
   };
 
+  React.useEffect(() => {
+    /*____Код, выполняемый после монтирования компонента____*/
+    // получаем элемент страницы
+    const elementBody = document.querySelector('body');
+    // функция, закрыть по клику вне списка сортировки
+    const closeOnClickOutsideTheListSort = (event) => {
+      /* composedPath() - возвращает массив элементов, 
+      начиная с целевого элемента события и до корневого элемента документа */
+      const arrElem = event.composedPath();
+      const elem = sortRef.current;
+      if (!arrElem.includes(elem)) {
+        setOpen(false);
+      }
+    };
+    // навешиваем обработчик события
+    elementBody.addEventListener('click', closeOnClickOutsideTheListSort);
+
+    /*____Код, выполняемый перед демонтажем компонента____*/
+    return () => {
+      // удаляем обработчик события
+      elementBody.removeEventListener('click', closeOnClickOutsideTheListSort);
+    };
+  }, []);
+
   return (
-    <div className={style['container']}>
+    <div className={style['container']} ref={sortRef}>
       <div className={style['label']}>
         <svg
           className={style['img']}
