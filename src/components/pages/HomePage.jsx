@@ -1,4 +1,5 @@
 import React from 'react';
+import { AppContext } from '../../App';
 
 import { useSelector } from 'react-redux';
 
@@ -17,24 +18,22 @@ import {
   getArrayFragment,
 } from '../../modules/modules';
 
-import { AppContext } from '../../App';
-
 function HomePage() {
   /* используем хук useSelector из библиотеки Redux 
-     для получения значений filteringId и sortId из состояния,
+     для получения значений (filteringId, sortId) из состояния,
      с помощью селектора sortingAndFilteringSlice */
   const { filteringId, sortId } = useSelector(
     (state) => state.sortingAndFilteringSlice
+  );
+  const { numberOfCardsPerPage, currentPage } = useSelector(
+    (state) => state.paginationSlice
   );
 
   const { searchValue } = React.useContext(AppContext);
   const [initialProductData, setInitialProductData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [numberOfCardsPerPage] = React.useState(8);
-  const [currentPage, setCurrentPage] = React.useState(0);
-
   // создадим массив для отображения скелетона (он будет заполнен undefined)
-  const arrayForSkeleton = [...new Array(20)];
+  const arrayForSkeleton = [...new Array(numberOfCardsPerPage)];
 
   /* Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !
   Подробнее:
@@ -62,17 +61,17 @@ function HomePage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // карточки товаров
+  // получаем отфильтрованные и отсортированные данные по введенным значениям
   const productsCards = getFilteredDataByEnteredValues(
     getSortedAndFilteredData(initialProductData, sortId, filteringId),
     searchValue
-  ).map((obj, index) => {
-    return <ProductCard key={obj.id} {...obj} />;
-  });
-  // карточки заменители
-  const substituteCards = arrayForSkeleton.map((item, index) => {
-    return <ProductCardSkeleton key={index} />;
-  });
+  );
+  // получаем фрагмент массива данных, который будет отрисовываться на странице
+  const productsCardsFragment = getArrayFragment(
+    productsCards,
+    currentPage,
+    numberOfCardsPerPage
+  );
 
   return (
     <>
@@ -86,28 +85,23 @@ function HomePage() {
 
       <section className='product-gallery'>
         {isLoading === true
-          ? getArrayFragment(
-              substituteCards,
-              currentPage,
-              numberOfCardsPerPage
-            )
-          : getArrayFragment(
-              productsCards,
-              currentPage,
-              numberOfCardsPerPage
-            )}
+          ? arrayForSkeleton.map((item, index) => {
+              // компонент, заглушки карточек товаров
+              return <ProductCardSkeleton key={index} />;
+            })
+          : productsCardsFragment.map((obj, index) => {
+              // компонент, карточки товаров
+              return <ProductCard key={obj.id} {...obj} />;
+            })}
       </section>
 
       <section className='pagination'>
         {isLoading === true ? (
+          // компонент, заглушка нумерации страниц
           <PaginationSkeleton />
         ) : (
-          <Pagination
-            initialProductData={initialProductData}
-            numberOfCardsPerPage={numberOfCardsPerPage}
-            valueCurrentId={currentPage}
-            onClickGoToPage={setCurrentPage}
-          />
+          // компонент, нумерации страниц
+          <Pagination initialProductData={initialProductData} />
         )}
       </section>
     </>

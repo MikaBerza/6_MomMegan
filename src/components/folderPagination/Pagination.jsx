@@ -1,14 +1,24 @@
 import React from 'react';
-import style from './Pagination.module.css';
 
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setCurrentPage } from '../../redux/slices/paginationSlice';
+
+import style from './Pagination.module.css';
 import { getAnArrayWithPageNumbers } from '../../modules/modules';
-//
-function Pagination({
-  initialProductData,
-  numberOfCardsPerPage,
-  valueCurrentId,
-  onClickGoToPage,
-}) {
+
+function Pagination({ initialProductData }) {
+  /* используем хук useSelector из библиотеки Redux 
+     для получения значений (numberOfCardsPerPage, currentPage) из состояния,
+     с помощью селектора paginationSlice */
+  const { numberOfCardsPerPage, currentPage } = useSelector(
+    (state) => state.paginationSlice
+  );
+  const dispatch = useDispatch();
+  const onClickGoToPage = (index) => {
+    dispatch(setCurrentPage(index));
+  };
+
   // массив номеров страниц
   const arrayOfPageNumbers = getAnArrayWithPageNumbers(
     initialProductData,
@@ -25,9 +35,9 @@ function Pagination({
                 <a
                   key={index}
                   onClick={() => onClickGoToPage(index)}
-                  className={`${
-                    valueCurrentId === index ? style['active'] : ''
-                  } ${style['page-link']} `}
+                  className={`${currentPage === index ? style['active'] : ''} ${
+                    style['page-link']
+                  } `}
                   href={`#page${index + 1}`}
                 >
                   {item}
