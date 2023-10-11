@@ -1,11 +1,45 @@
 import React from 'react';
-import style from './ProductCard.module.css';
 import Button from '../folderButton/Button';
-import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 
-function ProductCard({ imageUrl, title, types, price, sizes, rating }) {
-  const [activeSeason, setActiveSeason] = React.useState(0);
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import {
+  setProductCounter,
+  setPriceCounter,
+} from '../../redux/slices/cartOfProductsSlice';
+
+import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
+import style from './ProductCard.module.css';
+
+function ProductCard({ id, imageUrl, title, types, sizes, price, rating }) {
+  const dispatch = useDispatch();
+  /* используем хук useSelector из библиотеки Redux 
+     для получения значений (productCounter) из состояния,
+     с помощью селектора cartOfProductsSlice */
+  const { productCounter, priceCounter } = useSelector(
+    (state) => state.cartOfProductsSlice
+  );
+  const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
+
+  const getProductData = () => {
+    const updatedProductCounter = productCounter + 1;
+    const updatePriceCounter = priceCounter + price;
+    dispatch(setProductCounter(updatedProductCounter));
+    dispatch(setPriceCounter(updatePriceCounter));
+
+    // const productData = {
+    //   id: id,
+    //   imageUrl: imageUrl,
+    //   title: title,
+    //   types: types[activeType],
+    //   sizes: sizes[activeSize],
+    //   price: price,
+    // };
+    // console.log(productCounter, 'productCounter');
+    // console.log(priceCounter, 'priceCounter');
+    // console.log(price);
+  };
 
   return (
     <div className={style['card']}>
@@ -29,8 +63,8 @@ function ProductCard({ imageUrl, title, types, price, sizes, rating }) {
             return (
               <li
                 key={index}
-                onClick={() => setActiveSeason(index)}
-                className={`${activeSeason === index ? style.active : ''} ${
+                onClick={() => setActiveType(index)}
+                className={`${activeType === index ? style.active : ''} ${
                   style['card__list-item']
                 }`}
               >
@@ -58,6 +92,7 @@ function ProductCard({ imageUrl, title, types, price, sizes, rating }) {
       <div className={style['card__footer']}>
         <div className={style['card__price']}>{price} ₽</div>
         <Button
+          getProductData={getProductData}
           nameBtn={'Добавить'}
           nameStyle={['button_v1', 'button-icon_v1', 'button-name_v1']}
         />

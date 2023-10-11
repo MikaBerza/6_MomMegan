@@ -1,10 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import { Link } from 'react-router-dom';
 import style from './Header.module.css';
 //
 import mLogo from '../../assets/img/M-logo.png';
 
 function Header() {
+  /* используем хук useSelector из библиотеки Redux 
+     для получения значений (productCounter) из состояния,
+     с помощью селектора cartOfProductsSlice */
+  const { productCounter, priceCounter } = useSelector(
+    (state) => state.cartOfProductsSlice
+  );
+
   return (
     <header className={style['wrapper']}>
       <div className={style['label']}>
@@ -27,7 +36,7 @@ function Header() {
 
       <div className={style['basket-button']}>
         <Link to='/cart' className={style['basket-button__item']}>
-          <span className={style['basket-button__price']}>520</span>
+          <span className={style['basket-button__price']}>{priceCounter}</span>
           <div className={style['basket-button__delimiter']}></div>
           <svg
             className={style['basket-button__images']}
@@ -49,7 +58,9 @@ function Header() {
               <path d='M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z' />
             </g>
           </svg>
-          <span className={style['basket-button__counter']}>3</span>
+          <span className={style['basket-button__counter']}>
+            {productCounter}
+          </span>
         </Link>
       </div>
     </header>

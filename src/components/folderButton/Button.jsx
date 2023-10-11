@@ -1,9 +1,12 @@
 import React from 'react';
 import style from './Button.module.css';
 //
-function Button({ nameBtn, nameStyle }) {
+function Button({ nameBtn, nameStyle, getProductData }) {
   return (
-    <button className={`${style['button']} ${style[`${nameStyle[0]}`]}`}>
+    <button
+      className={`${style['button']} ${style[`${nameStyle[0]}`]}`}
+      onClick={getProductData}
+    >
       <svg
         className={`${style['button-icon']} ${style[`${nameStyle[1]}`]}`}
         viewBox='0 0 10 10'
