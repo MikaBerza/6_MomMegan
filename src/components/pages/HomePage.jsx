@@ -14,7 +14,7 @@ import PaginationSkeleton from '../folderPagination/PaginationSkeleton';
 import {
   getSortedAndFilteredData,
   getFilteredDataByEnteredValues,
-  getSliceOfTheArray,
+  getArrayFragment,
 } from '../../modules/modules';
 
 import { AppContext } from '../../App';
@@ -86,12 +86,12 @@ function HomePage() {
 
       <section className='product-gallery'>
         {isLoading === true
-          ? getSliceOfTheArray(
+          ? getArrayFragment(
               substituteCards,
               currentPage,
               numberOfCardsPerPage
             )
-          : getSliceOfTheArray(
+          : getArrayFragment(
               productsCards,
               currentPage,
               numberOfCardsPerPage

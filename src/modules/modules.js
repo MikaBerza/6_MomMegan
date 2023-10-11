@@ -106,7 +106,7 @@ export const getAnArrayWithPageNumbers = (arrData, numberOfProducts) => {
 };
 
 // функция, получить фрагмент массива
-export const getSliceOfTheArray = (
+export const getArrayFragment = (
   arrData,
   currentIndex,
   numberOfElementsPerPage
