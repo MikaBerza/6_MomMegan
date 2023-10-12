@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 
 import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 import style from './ProductCard.module.css';
+import { v4 as uuidv4 } from 'uuid';
 
 function ProductCard({ id, imageUrl, title, types, sizes, price, rating }) {
   const [activeType, setActiveType] = React.useState(0);
@@ -27,7 +28,7 @@ function ProductCard({ id, imageUrl, title, types, sizes, price, rating }) {
   const addAnItemToTheCart = () => {
     // формируем, данные добавленного товара в корзину
     const dataOfTheAddedProduct = {
-      id: id,
+      id: uuidv4(),
       imageUrl: imageUrl,
       title: title,
       types: types[activeType],

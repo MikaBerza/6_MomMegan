@@ -15,8 +15,8 @@ function CartPage() {
   return (
     <>
       <MainTitle titleName='Корзина' />
-      {cartData.map((obj, index) => {
-        return <CartCard key={index} {...obj} />;
+      {cartData.map((obj) => {
+        return <CartCard key={obj.id} {...obj} />;
       })}
       <OrderResult />
       <ButtonGroup />
