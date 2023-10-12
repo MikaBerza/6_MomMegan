@@ -8,17 +8,15 @@ import style from './Sort.module.css';
 
 function Sort({ valueId }) {
   const dispatch = useDispatch();
-  const onClickSorting = (index) => {
-    dispatch(setSortId(index));
-  };
+
   const searchItemName = listOfNamesOfSortingElements[valueId];
   const [open, setOpen] = React.useState(false);
   /* Используем хук useRef из библиотеки React для создания ссылки на DOM-элемент.
   Чтобы обратиться к DOM элементу через React */
   const sortRef = React.useRef();
 
-  const onClickSelectAnItem = (index) => {
-    onClickSorting(index);
+  const onClickSorting = (index) => {
+    dispatch(setSortId(index));
     setOpen(false);
   };
 
@@ -80,7 +78,7 @@ function Sort({ valueId }) {
                 <li
                   key={index}
                   onClick={() => {
-                    onClickSelectAnItem(index);
+                    onClickSorting(index);
                   }}
                   className={`${valueId === index ? style['active'] : ''} ${
                     style['list-item']
