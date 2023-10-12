@@ -1,40 +1,63 @@
 import React from 'react';
 import Button from '../folderButton/Button';
+
+import { useSelector } from 'react-redux';
+import {
+  setProductCounter,
+  setPriceCounter,
+  setCartData,
+} from '../../redux/slices/cartOfProductsSlice';
+import { useDispatch } from 'react-redux';
+
 import style from './CartCard.module.css';
-//
-function CartCard() {
+import { listOfSeasonTitles } from '../../assets/listsWithNames';
+
+function CartCard({ id, imageUrl, title, types, sizes, price }) {
+  /* используем хук useSelector из библиотеки Redux 
+     для получения значений (productCounter, priceCounter, cartData) из состояния,
+     с помощью селектора cartOfProductsSlice */
+  const { productCounter, priceCounter, cartData } = useSelector(
+    (state) => state.cartOfProductsSlice
+  );
+  const dispatch = useDispatch();
+
+    // функция, удалить товар из корзины
+  const removeItemFromCart = () => {
+    // копируем данные товара с помощью оператора spread
+    const copyCartData = [...cartData];
+    // удаляем выбранные данные из корзины
+    const newCartData = copyCartData.filter((item) => item.id !== id);
+    // обновляем данные в корзине
+    dispatch(setCartData(newCartData));
+
+    // записываем новые значения счетчиков в константы
+    const updatedProductCounter = productCounter - 1;
+    const updatePriceCounter = priceCounter - price;
+    // обновляем значения счетчиков товаров и цен
+    dispatch(setProductCounter(updatedProductCounter));
+    dispatch(setPriceCounter(updatePriceCounter));
+  };
+
   return (
     <div className={style['wrapper']}>
       <div className={style['product']}>
         <div className={style['images']}>
-          <img
-            className={style['images-item']}
-            src='https://storage.cloud.google.com/mommegan-c835e.appspot.com/1imgMen.png'
-            alt='Product'
-          />
+          <img className={style['images-item']} src={imageUrl} alt='Product' />
         </div>
         <div className={style['info']}>
-          <h3 className={style['title']}>Yeezy Boost</h3>
-          <p className={style['description']}>летнии, 41</p>
+          <h3 className={style['title']}>{title}</h3>
+          <p className={style['description']}>
+            {listOfSeasonTitles[types]}, {sizes}
+          </p>
         </div>
       </div>
       <div className={style['control-buttons']}>
-        <div className={style['inner']}>
-          <Button
-            nameStyle={['button_v2', 'button-icon_v2', 'button-name_v2']}
-          />
-          <div className={style['text-count']}>
-            <span className={style['text-count-item']}>2</span>
-          </div>
-          <Button
-            nameStyle={['button_v2', 'button-icon', 'button-name_v2']}
-          />
-        </div>
         <div className={style['text-price']}>
-          <span className={style['text-price-item']}>3450 ₽</span>
+          <span className={style['text-price-item']}>{price} ₽</span>
         </div>
         <div className={style['inner']}>
           <Button
+            handleClick={removeItemFromCart}
             nameStyle={['button_v2', 'button-icon_v3', 'button-name_v2']}
           />
         </div>

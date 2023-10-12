@@ -1,11 +1,18 @@
 import React from 'react';
 import style from './Button.module.css';
 //
-function Button({ nameBtn, nameStyle, getProductData }) {
+function Button({ nameBtn, nameStyle, handleClick }) {
+  // const myObject = arguments[0];
+  /* Object.entries()-статический метод возвращает массив 
+  собственных перечислимых пар ключ-значение 
+  свойства данного объекта со строковым ключом */
+  // const myArray = Object.entries(myObject);
+  // console.log(myArray);
+
   return (
     <button
       className={`${style['button']} ${style[`${nameStyle[0]}`]}`}
-      onClick={getProductData}
+      onClick={handleClick}
     >
       <svg
         className={`${style['button-icon']} ${style[`${nameStyle[1]}`]}`}

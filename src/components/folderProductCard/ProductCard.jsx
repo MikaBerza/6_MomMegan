@@ -1,44 +1,51 @@
 import React from 'react';
 import Button from '../folderButton/Button';
 
-import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import {
   setProductCounter,
   setPriceCounter,
+  setCartData,
 } from '../../redux/slices/cartOfProductsSlice';
+import { useDispatch } from 'react-redux';
 
 import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 import style from './ProductCard.module.css';
 
 function ProductCard({ id, imageUrl, title, types, sizes, price, rating }) {
-  const dispatch = useDispatch();
-  /* используем хук useSelector из библиотеки Redux 
-     для получения значений (productCounter) из состояния,
-     с помощью селектора cartOfProductsSlice */
-  const { productCounter, priceCounter } = useSelector(
-    (state) => state.cartOfProductsSlice
-  );
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
+  /* используем хук useSelector из библиотеки Redux 
+     для получения значений (productCounter, priceCounter, cartData) из состояния,
+     с помощью селектора cartOfProductsSlice */
+  const { productCounter, priceCounter, cartData } = useSelector(
+    (state) => state.cartOfProductsSlice
+  );
+  const dispatch = useDispatch();
 
-  const getProductData = () => {
+  // функция, добавить товар в корзину
+  const addAnItemToTheCart = () => {
+    // формируем, данные добавленного товара в корзину
+    const dataOfTheAddedProduct = {
+      id: id,
+      imageUrl: imageUrl,
+      title: title,
+      types: types[activeType],
+      sizes: sizes[activeSize],
+      price: price,
+    };
+    // копируем данные товара с помощью оператора spread
+    const copyCartData = [...cartData];
+    // обновляем данные в корзине
+    copyCartData.push(dataOfTheAddedProduct);
+    dispatch(setCartData(copyCartData));
+
+    // записываем новые значения счетчиков в константы
     const updatedProductCounter = productCounter + 1;
     const updatePriceCounter = priceCounter + price;
+    // обновляем значения счетчиков товаров и цен
     dispatch(setProductCounter(updatedProductCounter));
     dispatch(setPriceCounter(updatePriceCounter));
-
-    // const productData = {
-    //   id: id,
-    //   imageUrl: imageUrl,
-    //   title: title,
-    //   types: types[activeType],
-    //   sizes: sizes[activeSize],
-    //   price: price,
-    // };
-    // console.log(productCounter, 'productCounter');
-    // console.log(priceCounter, 'priceCounter');
-    // console.log(price);
   };
 
   return (
@@ -92,7 +99,7 @@ function ProductCard({ id, imageUrl, title, types, sizes, price, rating }) {
       <div className={style['card__footer']}>
         <div className={style['card__price']}>{price} ₽</div>
         <Button
-          getProductData={getProductData}
+          handleClick={addAnItemToTheCart}
           nameBtn={'Добавить'}
           nameStyle={['button_v1', 'button-icon_v1', 'button-name_v1']}
         />
