@@ -9,11 +9,22 @@ import {
 } from '../../redux/slices/cartOfProductsSlice';
 import { useDispatch } from 'react-redux';
 
-import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
+import {
+  listOfSeasonTitles,
+  listOfFilteringItemNames,
+} from '../../assets/listsWithNames.js';
 import style from './ProductCard.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
-function ProductCard({ id, imageUrl, title, types, sizes, price, rating }) {
+function ProductCard({
+  imageUrl,
+  title,
+  types,
+  sizes,
+  price,
+  rating,
+  category,
+}) {
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
   /* используем хук useSelector из библиотеки Redux 
@@ -22,6 +33,10 @@ function ProductCard({ id, imageUrl, title, types, sizes, price, rating }) {
   const { productCounter, priceCounter, cartData } = useSelector(
     (state) => state.cartOfProductsSlice
   );
+  const { filteringId } = useSelector(
+    (state) => state.sortingAndFilteringSlice
+  );
+
   const dispatch = useDispatch();
 
   // функция, добавить товар в корзину
@@ -50,10 +65,20 @@ function ProductCard({ id, imageUrl, title, types, sizes, price, rating }) {
   };
 
   return (
-    <div className={style['card']}>
+    <div
+      className={
+        filteringId !== 0 && filteringId === category
+          ? style['card']
+          : filteringId === 0
+          ? style['card']
+          : 'hiding-elements'
+      }
+    >
       <img className={style['card__image']} src={imageUrl} alt='product' />
       <div className={style['card__title']}>
-        <h4 className={style['card__title-text']}>{title}</h4>
+        <h4 className={style['card__title-text']}>
+          {title} {listOfFilteringItemNames[category]}
+        </h4>
         <svg
           className={style['card__title-stars']}
           width='30px'

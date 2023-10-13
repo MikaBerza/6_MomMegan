@@ -6,7 +6,9 @@ import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
 
 import style from './Sort.module.css';
 
-function Sort({ valueId }) {
+import { getSortedData } from '../../modules/modules';
+
+function Sort({ valueId, updateProductData, setUpdateProductData }) {
   const dispatch = useDispatch();
 
   const searchItemName = listOfNamesOfSortingElements[valueId];
@@ -17,7 +19,10 @@ function Sort({ valueId }) {
 
   const onClickSorting = (index) => {
     dispatch(setSortId(index));
+    const newProductsCardsFragment = getSortedData(updateProductData, index);
+    setUpdateProductData(newProductsCardsFragment);
     setOpen(false);
+    console.log(updateProductData, index, 'onClickSorting');
   };
 
   React.useEffect(() => {

@@ -14,7 +14,6 @@ import PaginationSkeleton from '../folderPagination/PaginationSkeleton';
 
 import {
   getSortedAndFilteredData,
-  getFilteredDataByEnteredValues,
   getArrayFragment,
 } from '../../modules/modules';
 
@@ -31,10 +30,10 @@ function HomePage() {
 
   const { searchValue } = React.useContext(AppContext);
   const [initialProductData, setInitialProductData] = React.useState([]);
+  const [updateProductData, setUpdateProductData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   // создадим массив для отображения скелетона (он будет заполнен undefined)
   const arrayForSkeleton = [...new Array(numberOfCardsPerPage)];
-
   /* Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !
   Подробнее:
   Когда компонент первоначально монтируется, `useEffect()` запускает асинхронный вызов `fetch()'
@@ -61,25 +60,35 @@ function HomePage() {
     window.scrollTo(0, 0);
   }, []);
 
-  /* получаем отфильтрованные и отсортированные данные
-  по указанным параметрам и по введенным значениям */
-  const productsCards = getFilteredDataByEnteredValues(
-    getSortedAndFilteredData(initialProductData, sortId, filteringId),
-    searchValue
-  );
-  // получаем фрагмент массива данных, который будет отрисовываться на странице
-  const productsCardsFragment = getArrayFragment(
-    productsCards,
-    currentPage,
-    numberOfCardsPerPage
-  );
+  React.useEffect(() => {
+    const productsCards = getSortedAndFilteredData(
+      initialProductData,
+      sortId,
+      filteringId
+    );
+    const productsCardsFragment = getArrayFragment(
+      productsCards,
+      currentPage,
+      numberOfCardsPerPage
+    );
+
+    setUpdateProductData(productsCardsFragment);
+    // установим не все зависимости
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialProductData, currentPage, numberOfCardsPerPage]);
 
   return (
     <>
       <Search />
       <section className='filtering-and-sorting'>
-        <Filtering valueId={filteringId} />
-        <Sort valueId={sortId} />
+        <Filtering
+          valueId={filteringId}
+        />
+        <Sort
+          valueId={sortId}
+          updateProductData={updateProductData}
+          setUpdateProductData={setUpdateProductData}
+        />
       </section>
 
       <MainTitle titleName='Товары' />
@@ -90,7 +99,7 @@ function HomePage() {
               // компонент, заглушки карточек товаров
               return <ProductCardSkeleton key={index} />;
             })
-          : productsCardsFragment.map((obj, index) => {
+          : updateProductData.map((obj) => {
               // компонент, карточки товаров
               return <ProductCard key={obj.id} {...obj} />;
             })}
