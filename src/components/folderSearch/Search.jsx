@@ -2,19 +2,20 @@ import React from 'react';
 import debounce from 'lodash.debounce';
 import style from './Search.module.css';
 
-import { AppContext } from '../../App';
+import { useDispatch } from 'react-redux';
+import { setSearchValue } from '../../redux/slices/sortingAndFilteringSlice';
 
 function Search() {
   const [localSearchValue, setLocalSearchValue] = React.useState('');
-  const { setSearchValue } = React.useContext(AppContext);
   /* Используем хук useRef из библиотеки React для создания ссылки на DOM-элемент.
   Чтобы обратиться к DOM элементу через React */
   const inputRef = React.useRef();
+  const dispatch = useDispatch();
 
   // функция, по щелчку мыши очистить и добавить фокус
   const onClickClearAndAddFocus = () => {
     setLocalSearchValue('');
-    setSearchValue('');
+    dispatch(setSearchValue(''));
     inputRef.current.focus();
   };
 
@@ -22,6 +23,7 @@ function Search() {
   чтобы функция (updateWithDelay) не пересоздавалась при каждой перерисовке компонента,
   если зависимости (в данном случае, зависимости от []) не изменились. */
   // функция, обновить с задержкой
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateWithDelay = React.useCallback(
     /* Используем (debounce) вместо (SetTimeout).
     Если новый вызов происходит во время ожидания выполнения задержанной операции,
@@ -37,6 +39,7 @@ function Search() {
   const onChangeInput = (event) => {
     setLocalSearchValue(event.target.value);
     updateWithDelay(localSearchValue);
+    dispatch(setSearchValue(event.target.value));
   };
 
   return (

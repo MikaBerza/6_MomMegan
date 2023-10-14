@@ -1,5 +1,4 @@
 import React from 'react';
-import { AppContext } from '../../App';
 
 import { useSelector } from 'react-redux';
 
@@ -15,22 +14,25 @@ import PaginationSkeleton from '../folderPagination/PaginationSkeleton';
 import {
   getSortedAndFilteredData,
   getArrayFragment,
+  getFilteredDataByEnteredValues,
+  checkLengthOfTheString,
 } from '../../modules/modules';
 
 function HomePage() {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (filteringId, sortId) из состояния,
      с помощью селектора sortingAndFilteringSlice */
-  const { filteringId, sortId } = useSelector(
+  const { filteringId, sortId, searchValue } = useSelector(
     (state) => state.sortingAndFilteringSlice
   );
   const { numberOfCardsPerPage, currentPage } = useSelector(
     (state) => state.paginationSlice
   );
 
-  const { searchValue } = React.useContext(AppContext);
   const [initialProductData, setInitialProductData] = React.useState([]);
   const [updateProductData, setUpdateProductData] = React.useState([]);
+  const [flag, setFlag] = React.useState(true);
+  const [productsCards, setProductsCards] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   // создадим массив для отображения скелетона (он будет заполнен undefined)
   const arrayForSkeleton = [...new Array(numberOfCardsPerPage)];
@@ -61,29 +63,34 @@ function HomePage() {
   }, []);
 
   React.useEffect(() => {
-    const productsCards = getSortedAndFilteredData(
-      initialProductData,
-      sortId,
-      filteringId
-    );
     const productsCardsFragment = getArrayFragment(
-      productsCards,
+      getSortedAndFilteredData(initialProductData, sortId, filteringId),
       currentPage,
       numberOfCardsPerPage
     );
-
     setUpdateProductData(productsCardsFragment);
     // установим не все зависимости
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialProductData, currentPage, numberOfCardsPerPage]);
 
+  React.useEffect(() => {
+    setFlag(checkLengthOfTheString(searchValue));
+    // запишем условие
+    if (flag) {
+      setProductsCards(updateProductData);
+    } else {
+      setProductsCards(
+        getFilteredDataByEnteredValues(initialProductData, searchValue)
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchValue, updateProductData]);
+
   return (
     <>
       <Search />
       <section className='filtering-and-sorting'>
-        <Filtering
-          valueId={filteringId}
-        />
+        <Filtering valueId={filteringId} />
         <Sort
           valueId={sortId}
           updateProductData={updateProductData}
@@ -99,13 +106,13 @@ function HomePage() {
               // компонент, заглушки карточек товаров
               return <ProductCardSkeleton key={index} />;
             })
-          : updateProductData.map((obj) => {
+          : productsCards.map((obj) => {
               // компонент, карточки товаров
               return <ProductCard key={obj.id} {...obj} />;
             })}
       </section>
 
-      <section className='pagination'>
+      <section className={flag ? ' pagination' : 'hiding-elements'}>
         {isLoading === true ? (
           // компонент, заглушка нумерации страниц
           <PaginationSkeleton />

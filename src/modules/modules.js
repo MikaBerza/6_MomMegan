@@ -114,3 +114,12 @@ export const getArrayFragment = (
   const end = begin + numberOfElementsPerPage;
   return arrData.slice(begin, end);
 };
+
+// функция проверяет длину строки
+export function checkLengthOfTheString(str) {
+  if (str.trim().length === 0) {
+    return true;
+  } else if (str.trim().length > 0) {
+    return false;
+  }
+}

@@ -9,10 +9,7 @@ import {
 } from '../../redux/slices/cartOfProductsSlice';
 import { useDispatch } from 'react-redux';
 
-import {
-  listOfSeasonTitles,
-  listOfFilteringItemNames,
-} from '../../assets/listsWithNames.js';
+import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 import style from './ProductCard.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -76,9 +73,7 @@ function ProductCard({
     >
       <img className={style['card__image']} src={imageUrl} alt='product' />
       <div className={style['card__title']}>
-        <h4 className={style['card__title-text']}>
-          {title} {listOfFilteringItemNames[category]}
-        </h4>
+        <h4 className={style['card__title-text']}>{title}</h4>
         <svg
           className={style['card__title-stars']}
           width='30px'

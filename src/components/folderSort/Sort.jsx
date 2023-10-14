@@ -22,7 +22,6 @@ function Sort({ valueId, updateProductData, setUpdateProductData }) {
     const newProductsCardsFragment = getSortedData(updateProductData, index);
     setUpdateProductData(newProductsCardsFragment);
     setOpen(false);
-    console.log(updateProductData, index, 'onClickSorting');
   };
 
   React.useEffect(() => {

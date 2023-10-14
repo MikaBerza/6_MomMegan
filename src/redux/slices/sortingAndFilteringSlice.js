@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   filteringId: 0,
   sortId: 0,
+  searchValue: '',
 };
 
 export const sortingAndFilteringSlice = createSlice({
@@ -17,9 +18,13 @@ export const sortingAndFilteringSlice = createSlice({
     setSortId(state, action) {
       state.sortId = action.payload;
     },
+    setSearchValue(state, action) {
+      state.searchValue = action.payload;
+    },
   },
 });
 
-export const { setFilteringId, setSortId } = sortingAndFilteringSlice.actions;
+export const { setFilteringId, setSortId, setSearchValue } =
+  sortingAndFilteringSlice.actions;
 
 export default sortingAndFilteringSlice.reducer;
