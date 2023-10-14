@@ -17,7 +17,7 @@ function Header() {
   return (
     <header className={style['wrapper']}>
       <div className={style['label']}>
-        <Link className={style['label__link']} to='/HomePage'>
+        <Link className={style['label__link']} to='/'>
           <div className={style['label__images']}>
             <img
               className={style['label__images-item']}
