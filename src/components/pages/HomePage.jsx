@@ -15,7 +15,6 @@ import {
   getSortedAndFilteredData,
   getArrayFragment,
   getFilteredDataByEnteredValues,
-  checkLengthOfTheString,
 } from '../../modules/modules';
 
 function HomePage() {
@@ -31,7 +30,6 @@ function HomePage() {
 
   const [initialProductData, setInitialProductData] = React.useState([]);
   const [updateProductData, setUpdateProductData] = React.useState([]);
-  const [flag, setFlag] = React.useState(true);
   const [productsCards, setProductsCards] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   // создадим массив для отображения скелетона (он будет заполнен undefined)
@@ -73,18 +71,33 @@ function HomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialProductData, currentPage, numberOfCardsPerPage]);
 
+  // поиск товаров
   React.useEffect(() => {
-    setFlag(checkLengthOfTheString(searchValue));
     // запишем условие
-    if (flag) {
+    if (searchValue.trim().length === 0) {
       setProductsCards(updateProductData);
     } else {
       setProductsCards(
         getFilteredDataByEnteredValues(initialProductData, searchValue)
       );
     }
+    // установим не все зависимости
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchValue, updateProductData, flag]);
+  }, [searchValue, updateProductData]);
+
+  // фильтр по категориям
+  React.useEffect(() => {
+    // запишем условие
+    if (filteringId === 0) {
+      setProductsCards(updateProductData);
+    } else {
+      setProductsCards(
+        getSortedAndFilteredData(initialProductData, sortId, filteringId)
+      );
+    }
+    // установим не все зависимости
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filteringId, sortId, updateProductData]);
 
   return (
     <>
@@ -111,8 +124,13 @@ function HomePage() {
               return <ProductCard key={obj.id} {...obj} />;
             })}
       </section>
-
-      <section className={flag ? ' pagination' : 'hiding-elements'}>
+      <section
+        className={
+          searchValue.trim().length === 0 && filteringId === 0
+            ? 'pagination'
+            : `${'pagination'} ${'not-visible-element'}`
+        }
+      >
         {isLoading === true ? (
           // компонент, заглушка нумерации страниц
           <PaginationSkeleton />

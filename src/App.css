@@ -133,8 +133,8 @@ a {
   padding-top: 20vh;
 }
 
-.hiding-elements {
-  display: none;
+.not-visible-element {
+  visibility: hidden;
 }
 
 /* 
@@ -185,7 +185,6 @@ ___ Эти стили применяю если у сервера превыше
     justify-content: center;
   }
 }
-
 
 @media (max-width: 1500px) {
   .wrapper {

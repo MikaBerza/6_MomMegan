@@ -1,14 +1,16 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { setSortId } from '../../redux/slices/sortingAndFilteringSlice';
-import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
 
+import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
+import { getSortedData } from '../../modules/modules';
 import style from './Sort.module.css';
 
-import { getSortedData } from '../../modules/modules';
-
 function Sort({ valueId, updateProductData, setUpdateProductData }) {
+  const { searchValue } = useSelector(
+    (state) => state.sortingAndFilteringSlice
+  );
   const dispatch = useDispatch();
 
   const searchItemName = listOfNamesOfSortingElements[valueId];
@@ -49,7 +51,14 @@ function Sort({ valueId, updateProductData, setUpdateProductData }) {
   }, []);
 
   return (
-    <div className={style['container']} ref={sortRef}>
+    <div
+      className={
+        searchValue.trim().length !== 0
+          ? `${style['container']} ${'not-visible-element'}`
+          : style['container']
+      }
+      ref={sortRef}
+    >
       <div className={style['label']}>
         <svg
           className={style['img']}

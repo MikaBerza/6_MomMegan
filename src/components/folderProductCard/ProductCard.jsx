@@ -1,27 +1,18 @@
 import React from 'react';
 import Button from '../folderButton/Button';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   setProductCounter,
   setPriceCounter,
   setCartData,
 } from '../../redux/slices/cartOfProductsSlice';
-import { useDispatch } from 'react-redux';
 
 import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 import style from './ProductCard.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
-function ProductCard({
-  imageUrl,
-  title,
-  types,
-  sizes,
-  price,
-  rating,
-  category,
-}) {
+function ProductCard({ imageUrl, title, types, sizes, price, rating }) {
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
   /* используем хук useSelector из библиотеки Redux 
@@ -29,9 +20,6 @@ function ProductCard({
      с помощью селектора cartOfProductsSlice */
   const { productCounter, priceCounter, cartData } = useSelector(
     (state) => state.cartOfProductsSlice
-  );
-  const { filteringId } = useSelector(
-    (state) => state.sortingAndFilteringSlice
   );
 
   const dispatch = useDispatch();
@@ -62,15 +50,7 @@ function ProductCard({
   };
 
   return (
-    <div
-      className={
-        filteringId !== 0 && filteringId === category
-          ? style['card']
-          : filteringId === 0
-          ? style['card']
-          : 'hiding-elements'
-      }
-    >
+    <div className={style['card']}>
       <img className={style['card__image']} src={imageUrl} alt='product' />
       <div className={style['card__title']}>
         <h4 className={style['card__title-text']}>{title}</h4>

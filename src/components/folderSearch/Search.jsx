@@ -1,20 +1,21 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import debounce from 'lodash.debounce';
+
+import { setSearchValue } from '../../redux/slices/sortingAndFilteringSlice';
 import style from './Search.module.css';
 
-import { useDispatch } from 'react-redux';
-import { setSearchValue } from '../../redux/slices/sortingAndFilteringSlice';
-
 function Search() {
-  const [localSearchValue, setLocalSearchValue] = React.useState('');
   /* Используем хук useRef из библиотеки React для создания ссылки на DOM-элемент.
   Чтобы обратиться к DOM элементу через React */
   const inputRef = React.useRef();
+  const { filteringId, searchValue } = useSelector(
+    (state) => state.sortingAndFilteringSlice
+  );
   const dispatch = useDispatch();
 
   // функция, по щелчку мыши очистить и добавить фокус
   const onClickClearAndAddFocus = () => {
-    setLocalSearchValue('');
     dispatch(setSearchValue(''));
     inputRef.current.focus();
   };
@@ -31,19 +32,23 @@ function Search() {
     SetTimeout же независимо продолжает исходный отсчет времени. */
     debounce((str) => {
       // обновляем глобально значение поиска
-      setSearchValue(str);
+      dispatch(setSearchValue(str));
     }, 350),
     []
   );
 
   const onChangeInput = (event) => {
-    setLocalSearchValue(event.target.value);
-    updateWithDelay(localSearchValue);
-    dispatch(setSearchValue(event.target.value));
+    updateWithDelay(event.target.value);
   };
 
   return (
-    <section className={style['wrapper']}>
+    <section
+      className={
+        filteringId !== 0
+          ? `${style['wrapper']} ${'not-visible-element'}`
+          : style['wrapper']
+      }
+    >
       <svg className={style['icon-search']} viewBox='0 0 32 32' version='1.1'>
         <path d='M10.437,19.442l-7.498,7.497c-0.585,0.586 -0.585,1.536 0,2.122c0.586,0.585 1.536,0.585 2.122,-0l7.649,-7.65c1.544,0.976 3.373,1.542 5.333,1.542c5.52,-0 10,-4.481 10,-10c0,-5.52 -4.48,-10 -10,-10c-5.519,-0 -10,4.48 -10,10c0,2.475 0.902,4.741 2.394,6.489Z' />
       </svg>
@@ -51,14 +56,14 @@ function Search() {
         className={style['input']}
         ref={inputRef}
         // с помощью value и onChange сделали компонент Search контролируемым
-        value={localSearchValue}
+        value={searchValue}
         onChange={onChangeInput}
         type='text'
         placeholder='Поиск товаров'
       />
-      {/* если localSearchValue имеет текс, то выводим SVG-картинку, в противном случае 
+      {/* если searchValue имеет текс, то выводим SVG-картинку, в противном случае 
       ничего не выводим */}
-      {localSearchValue ? (
+      {searchValue ? (
         <svg
           className={style['icon-clear']}
           onClick={onClickClearAndAddFocus}
