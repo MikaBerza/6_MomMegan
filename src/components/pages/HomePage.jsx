@@ -84,7 +84,7 @@ function HomePage() {
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchValue, updateProductData]);
+  }, [searchValue, updateProductData, flag]);
 
   return (
     <>
