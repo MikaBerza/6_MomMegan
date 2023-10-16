@@ -53,7 +53,7 @@ function CartCard({ id, imageUrl, title, types, sizes, price }) {
       </div>
       <div className={style['control-buttons']}>
         <div className={style['text-price']}>
-          <span className={style['text-price-item']}>{price} ₽</span>
+          <span className={style['text-price-item']}>{price.toLocaleString()} ₽</span>
         </div>
         <div className={style['inner']}>
           <Button

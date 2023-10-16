@@ -36,7 +36,7 @@ function Header() {
 
       <div className={style['basket-button']}>
         <Link to='/CartPage' className={style['basket-button__item']}>
-          <span className={style['basket-button__price']}>{priceCounter}</span>
+          <span className={style['basket-button__price']}>{priceCounter.toLocaleString()}</span>
           <div className={style['basket-button__delimiter']}></div>
           <svg
             className={style['basket-button__images']}
@@ -59,7 +59,7 @@ function Header() {
             </g>
           </svg>
           <span className={style['basket-button__counter']}>
-            {productCounter}
+            {productCounter.toLocaleString()}
           </span>
         </Link>
       </div>

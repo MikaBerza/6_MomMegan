@@ -98,7 +98,7 @@ function ProductCard({ imageUrl, title, types, sizes, price, rating }) {
         </ul>
       </div>
       <div className={style['card__footer']}>
-        <div className={style['card__price']}>{price} ₽</div>
+        <div className={style['card__price']}>{price.toLocaleString()} ₽</div>
         <Button
           handleClick={addAnItemToTheCart}
           nameBtn={'Добавить'}

@@ -13,10 +13,10 @@ function OrderResult() {
   return (
     <div className={style['wrapper']}>
       <p className={style['in-total']}>
-        Всего: <b className={style['number']}>{productCounter} шт.</b>
+        Всего: <b className={style['number']}>{productCounter.toLocaleString()} шт.</b>
       </p>
       <p className={style['amount']}>
-        Сумма: <b className={style['number']}>{priceCounter} ₽</b>
+        Сумма: <b className={style['number']}>{priceCounter.toLocaleString()} ₽</b>
       </p>
     </div>
   );
