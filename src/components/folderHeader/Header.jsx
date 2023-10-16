@@ -26,9 +26,7 @@ function Header() {
             />
             <div>
               <h1 className={style['label__title']}>Megan</h1>
-              <p className={style['label__subtitle']}>
-                обувь говорит громче слов
-              </p>
+              <p className={style['label__subtitle']}>Одежда, которая вдохновляет</p>
             </div>
           </div>
         </Link>
@@ -36,7 +34,9 @@ function Header() {
 
       <div className={style['basket-button']}>
         <Link to='/CartPage' className={style['basket-button__item']}>
-          <span className={style['basket-button__price']}>{priceCounter.toLocaleString()}</span>
+          <span className={style['basket-button__price']}>
+            {priceCounter.toLocaleString()}
+          </span>
           <div className={style['basket-button__delimiter']}></div>
           <svg
             className={style['basket-button__images']}
