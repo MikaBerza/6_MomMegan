@@ -53,7 +53,9 @@ function ProductCard({ imageUrl, title, types, sizes, price, rating }) {
     <div className={style['card']}>
       <img className={style['card__image']} src={imageUrl} alt='product' />
       <div className={style['card__title']}>
-        <h4 className={style['card__title-text']}>{title}</h4>
+        <h4 className={style['card__title-text']}>
+          {title}
+        </h4>
         <svg
           className={style['card__title-stars']}
           width='30px'

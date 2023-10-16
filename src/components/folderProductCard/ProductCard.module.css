@@ -13,15 +13,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 30px;
   margin-bottom: 20px;
 }
 
 .card__title-text {
+  position: relative;
+  overflow: hidden;
+  width: 200px;
   padding-right: 10px;
   font-size: 20px;
   font-weight: 900;
+  white-space: nowrap;
   letter-spacing: 1%;
+  text-overflow: ellipsis;
   color: var(--gray4);
+}
+
+.card__title-text:hover {
+  overflow: auto;
+  max-height: 50px;
+  white-space: initial;
 }
 
 .card__title-rating {
