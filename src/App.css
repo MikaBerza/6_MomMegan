@@ -200,7 +200,7 @@ ___ Эти стили применяю если у сервера превыше
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1094px) {
   .wrapper {
     margin-top: 20px;
   }
