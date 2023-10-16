@@ -21,21 +21,26 @@ function CartCard({ id, imageUrl, title, types, sizes, price }) {
   );
   const dispatch = useDispatch();
 
-    // функция, удалить товар из корзины
+  // функция, удалить товар из корзины
   const removeItemFromCart = () => {
-    // копируем данные товара с помощью оператора spread
-    const copyCartData = [...cartData];
-    // удаляем выбранные данные из корзины
-    const newCartData = copyCartData.filter((item) => item.id !== id);
-    // обновляем данные в корзине
-    dispatch(setCartData(newCartData));
+    const confirmation = window.confirm(
+      'Вы действительно хотите удалить товар из корзины?'.toUpperCase()
+    );
+    if (confirmation) {
+      // копируем данные товара с помощью оператора spread
+      const copyCartData = [...cartData];
+      // удаляем выбранные данные из корзины
+      const newCartData = copyCartData.filter((item) => item.id !== id);
+      // обновляем данные в корзине
+      dispatch(setCartData(newCartData));
 
-    // записываем новые значения счетчиков в константы
-    const updatedProductCounter = productCounter - 1;
-    const updatePriceCounter = priceCounter - price;
-    // обновляем значения счетчиков товаров и цен
-    dispatch(setProductCounter(updatedProductCounter));
-    dispatch(setPriceCounter(updatePriceCounter));
+      // записываем новые значения счетчиков в константы
+      const updatedProductCounter = productCounter - 1;
+      const updatePriceCounter = priceCounter - price;
+      // обновляем значения счетчиков товаров и цен
+      dispatch(setProductCounter(updatedProductCounter));
+      dispatch(setPriceCounter(updatePriceCounter));
+    }
   };
 
   return (
@@ -53,7 +58,9 @@ function CartCard({ id, imageUrl, title, types, sizes, price }) {
       </div>
       <div className={style['control-buttons']}>
         <div className={style['text-price']}>
-          <span className={style['text-price-item']}>{price.toLocaleString()} ₽</span>
+          <span className={style['text-price-item']}>
+            {price.toLocaleString()} ₽
+          </span>
         </div>
         <div className={style['inner']}>
           <Button
