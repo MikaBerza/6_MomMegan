@@ -80,17 +80,14 @@ function HomePage() {
     // запишем условие
     if (searchValue.trim().length === 0 && filteringId === 0) {
       setProductsCards(updateProductData);
-      console.log('вариант-1');
     } else if (searchValue.trim().length === 0 && filteringId !== 0) {
       setProductsCards(
         getSortedAndFilteredData(initialProductData, sortId, filteringId)
       );
-      console.log('вариант-2');
     } else if (searchValue.trim().length !== 0 && filteringId === 0) {
       setProductsCards(
         getFilteredDataByEnteredValues(initialProductData, searchValue)
       );
-      console.log('вариант-3');
     } else if (searchValue.trim().length !== 0 && filteringId !== 0) {
       setProductsCards(
         getFilteredDataByEnteredValues(
@@ -98,7 +95,6 @@ function HomePage() {
           searchValue
         )
       );
-      console.log('вариант-4');
     }
     // установим не все зависимости
     // eslint-disable-next-line react-hooks/exhaustive-deps
