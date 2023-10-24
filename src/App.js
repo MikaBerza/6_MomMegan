@@ -11,12 +11,12 @@ import './App.css';
 function App() {
   return (
     <div className='wrapper'>
-        <Header />
-        <Routes>
-          <Route path='/HomePage' element={<HomePage />} />
-          <Route path='/CartPage' element={<CartPage />} />
-          <Route path='*' element={<NotFoundPage />} />
-        </Routes>
+      <Header />
+      <Routes>
+        <Route path='/HomePage' element={<HomePage />} />
+        <Route path='/CartPage' element={<CartPage />} />
+        <Route path='*' element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 }

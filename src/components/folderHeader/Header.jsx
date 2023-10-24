@@ -26,7 +26,9 @@ function Header() {
             />
             <div>
               <h1 className={style['label__title']}>Megan</h1>
-              <p className={style['label__subtitle']}>Одежда, которая вдохновляет</p>
+              <p className={style['label__subtitle']}>
+                Одежда, которая вдохновляет
+              </p>
             </div>
           </div>
         </Link>
