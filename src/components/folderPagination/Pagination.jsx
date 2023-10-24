@@ -38,7 +38,7 @@ function Pagination({ initialProductData }) {
                   className={`${currentPage === index ? style['active'] : ''} ${
                     style['page-link']
                   } `}
-                  href={`#page${index + 1}`}
+                  href={`#page${currentPage + 1}`}
                 >
                   {item}
                 </a>

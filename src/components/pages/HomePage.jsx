@@ -19,7 +19,7 @@ import {
 
 function HomePage() {
   /* используем хук useSelector из библиотеки Redux 
-     для получения значений (filteringId, sortId) из состояния,
+     для получения значений (filteringId, sortId, searchValue) из состояния,
      с помощью селектора sortingAndFilteringSlice */
   const { filteringId, sortId, searchValue } = useSelector(
     (state) => state.sortingAndFilteringSlice
