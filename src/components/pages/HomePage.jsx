@@ -61,43 +61,48 @@ function HomePage() {
   }, []);
 
   React.useEffect(() => {
+    // получим отсортированный и отфильтрованный массив данных
     const productsCardsFragment = getArrayFragment(
       getSortedAndFilteredData(initialProductData, sortId, filteringId),
       currentPage,
       numberOfCardsPerPage
     );
+    // запишем в переменную состояния
     setUpdateProductData(productsCardsFragment);
     // установим не все зависимости
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialProductData, currentPage, numberOfCardsPerPage]);
+  }, [initialProductData, numberOfCardsPerPage, currentPage, filteringId]);
 
-  // поиск товаров
-  React.useEffect(() => {
+  /* используем (useMemo) для создания и кэширования отфильтрованных и отсортированных данных,
+  это позволяет избежать повторного вычисления данных при изменении других зависимостей
+  поиск товаров и фильтр по категориям */
+  React.useMemo(() => {
     // запишем условие
-    if (searchValue.trim().length === 0) {
+    if (searchValue.trim().length === 0 && filteringId === 0) {
       setProductsCards(updateProductData);
-    } else {
-      setProductsCards(
-        getFilteredDataByEnteredValues(initialProductData, searchValue)
-      );
-    }
-    // установим не все зависимости
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchValue, updateProductData]);
-
-  // фильтр по категориям
-  React.useEffect(() => {
-    // запишем условие
-    if (filteringId === 0) {
-      setProductsCards(updateProductData);
-    } else {
+      console.log('вариант-1');
+    } else if (searchValue.trim().length === 0 && filteringId !== 0) {
       setProductsCards(
         getSortedAndFilteredData(initialProductData, sortId, filteringId)
       );
+      console.log('вариант-2');
+    } else if (searchValue.trim().length !== 0 && filteringId === 0) {
+      setProductsCards(
+        getFilteredDataByEnteredValues(initialProductData, searchValue)
+      );
+      console.log('вариант-3');
+    } else if (searchValue.trim().length !== 0 && filteringId !== 0) {
+      setProductsCards(
+        getFilteredDataByEnteredValues(
+          getSortedAndFilteredData(initialProductData, sortId, filteringId),
+          searchValue
+        )
+      );
+      console.log('вариант-4');
     }
     // установим не все зависимости
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filteringId, sortId, updateProductData]);
+  }, [searchValue, filteringId, sortId, updateProductData]);
 
   return (
     <>
