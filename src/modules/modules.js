@@ -123,3 +123,32 @@ export function checkLengthOfTheString(str) {
     return false;
   }
 }
+
+/* Бок с функциями для работы c localStorage____________________________________________________*/
+// функция проверяет данные из localStorage на null (отсутствие значения)
+export function checkLocalStorageForNull() {
+  // получим строку с данными из localStorage
+  const dataFromLocalStorage = window.localStorage.getItem('keyDataset');
+  if (dataFromLocalStorage === null) {
+    return null;
+  }
+  return true;
+}
+
+// функция записывает данные в localStorage
+export function writeToLocalStorage(dataset) {
+  // преобразует значение JS в строку JSON
+  const strDataset = JSON.stringify(dataset);
+  // добавляем набор данных в localStorage
+  window.localStorage.setItem('keyDataset', strDataset);
+}
+
+// функция возвращает объект с данными из localStorage
+export function returnAnObjectWithDataFromLocalStorage() {
+  // получим строку с данными из localStorage
+  const dataFromLocalStorage = window.localStorage.getItem('keyDataset');
+  // преобразуем строку JSON из localStorage в значение JS
+  const dataset = JSON.parse(dataFromLocalStorage);
+  return dataset;
+}
+/*______________________________________________________________________________________________*/
