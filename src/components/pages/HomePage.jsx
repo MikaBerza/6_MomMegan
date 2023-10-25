@@ -45,7 +45,7 @@ function HomePage() {
   один раз, так как зависимостей нет. */
   React.useEffect(() => {
     setIsLoading(true);
-    fetch('1https://mommegan-c835e-default-rtdb.firebaseio.com/shoesData.json')
+    fetch('https://mommegan-c835e-default-rtdb.firebaseio.com/shoesData.json')
       // преобразуем полученный ответа `response` в формате JSON
       .then((response) => response.json())
       // принимаем преобразованный объект JavaScript в качестве аргумента `initialProductData`.
