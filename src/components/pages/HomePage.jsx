@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
+import Advertising from '../folderAdvertising/Advertising'
 import Sort from '../folderSort/Sort';
 import Filtering from '../folderFiltering/Filtering';
 import Search from '../folderSearch/Search';
@@ -107,6 +108,7 @@ function HomePage() {
 
   return (
     <>
+      <Advertising />
       <Search />
       <section className='filtering-and-sorting'>
         <Filtering valueId={filteringId} />
