@@ -8,6 +8,10 @@
   display: contents;
 }
 
+.hide-element {
+  display: none;
+}
+
 @media (max-width: 500px) {
   .wrapper {
     flex-direction: column-reverse;

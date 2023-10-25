@@ -3,10 +3,14 @@ import Button from '../folderButton/Button';
 import style from './ButtonGroup.module.css';
 import { Link } from 'react-router-dom';
 //
-function ButtonGroup() {
+function ButtonGroup({ styleName }) {
+  if (styleName === undefined) {
+    styleName = '';
+  }
+
   return (
-    <div className={style['wrapper']}>
-      <Link to='/' className={style['link']}>
+    <div className={`${style['wrapper']} ${style[styleName]}`}>
+      <Link to='/HomePage' className={style['link']}>
         <Button
           nameBtn={'Вернуться назад'}
           nameStyle={['button_v5', 'button-icon_v4', 'button-name_v1']}
