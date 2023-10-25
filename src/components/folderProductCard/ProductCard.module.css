@@ -117,3 +117,9 @@
   letter-spacing: 0.015em;
   color: var(--gray4);
 }
+
+@media (max-width: 410px) {
+  .price {
+    font-size: 18px;
+  }
+}

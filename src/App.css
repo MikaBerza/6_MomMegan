@@ -180,27 +180,21 @@ ___ Эти стили применяю если у сервера превыше
 /*___ Эти стили применяю если у сервера превышен лимит по запросам */
 
 @media (max-width: 1640px) {
+  .wrapper {
+    padding: 0 20px 20px;
+  }
+
   .filtering-and-sorting {
     flex-direction: column-reverse;
     justify-content: center;
-  }
-}
-
-@media (max-width: 1500px) {
-  .wrapper {
-    padding: 0 20px 20px;
   }
 
   .product-gallery {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .filtering {
-    margin-top: 30px;
-  }
 }
 
-@media (max-width: 1094px) {
+@media (max-width: 1196px) {
   .wrapper {
     margin-top: 20px;
   }
@@ -210,7 +204,7 @@ ___ Эти стили применяю если у сервера превыше
   }
 }
 
-@media (max-width: 670px) {
+@media (max-width: 837px) {
   body {
     padding: 0 20px;
   }

@@ -70,7 +70,8 @@
 }
 
 .text-price-item {
-  width: 127px;
+  width: 150px;
+  text-align: end;
 }
 
 .text-count-item {
@@ -95,7 +96,6 @@
 }
 
 @media (max-width: 820px) {
-
   .product {
     flex-direction: column;
   }
@@ -106,15 +106,3 @@
     flex-direction: column;
   }
 }
-
-/* @media (max-width: 560px) {
-  .text-price-item {
-    width: 100px;
-    font-size: 16px;
-  }
-
-  .text-count-item {
-    width: 50px;
-    font-size: 16px;
-  }
-} */
