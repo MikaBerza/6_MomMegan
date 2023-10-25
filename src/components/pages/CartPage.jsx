@@ -28,7 +28,7 @@ function CartPage() {
     </>
   ) : (
     <>
-      <MainTitle titleName='Ваша корзина пуста...' />
+      <MainTitle titleName='Ваша корзина пуста...' styleName={'title-item-empty'}/>
       <InsteadProduct img={emptyCart} />
       <ButtonGroup styleName={'hide-element'} />
     </>
