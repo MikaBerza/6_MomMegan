@@ -47,7 +47,7 @@
   --gray3: #7b7b7b;
   --gray4: #444;
   --black1: #000000;
-
+  --tomato-color: rgba(255, 99, 71, 0.6);
 }
 
 * {

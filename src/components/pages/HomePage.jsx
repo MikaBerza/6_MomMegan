@@ -10,6 +10,7 @@ import ProductCard from '../folderProductCard/ProductCard';
 import ProductCardSkeleton from '../folderProductCard/ProductCardSkeleton';
 import Pagination from '../folderPagination/Pagination';
 import PaginationSkeleton from '../folderPagination/PaginationSkeleton';
+import Error from '../folderErr/Error';
 
 import {
   getSortedAndFilteredData,
@@ -32,6 +33,7 @@ function HomePage() {
   const [updateProductData, setUpdateProductData] = React.useState([]);
   const [productsCards, setProductsCards] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [errorOccurred, setErrorOccurred] = React.useState(false);
   // создадим массив для отображения скелетона (он будет заполнен undefined)
   const arrayForSkeleton = [...new Array(numberOfCardsPerPage)];
   /* Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !
@@ -48,13 +50,14 @@ function HomePage() {
       .then((data) => {
         // вызываем функцию `setInitialProductData()` в нееи устанавливаем значение `data` в состояние компонента
         setInitialProductData(data);
-        setIsLoading(false);
       })
       // ловим ошибки, возникающие при выполнении fetch-запроса
       .catch((err) => {
         console.log(err, 'err');
-        // после получения ошибки изменим флаг на true (чтобы появился скелетон пиц), т.к. изображения не будут загружены
-        setIsLoading(true);
+        setErrorOccurred(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
     // при переходе на страницу автоматический скролл вверх
     window.scrollTo(0, 0);
@@ -111,35 +114,45 @@ function HomePage() {
           setUpdateProductData={setUpdateProductData}
         />
       </section>
-
-      <MainTitle titleName='Товары' />
-
-      <section className='product-gallery'>
-        {isLoading === true
-          ? arrayForSkeleton.map((item, index) => {
-              // компонент, заглушки карточек товаров
-              return <ProductCardSkeleton key={index} />;
-            })
-          : productsCards.map((obj) => {
-              // компонент, карточки товаров
-              return <ProductCard key={obj.id} {...obj} />;
-            })}
-      </section>
-      <section
-        className={
-          searchValue.trim().length === 0 && filteringId === 0
-            ? 'pagination'
-            : `${'pagination'} ${'not-visible-element'}`
-        }
-      >
-        {isLoading === true ? (
-          // компонент, заглушка нумерации страниц
-          <PaginationSkeleton />
-        ) : (
-          // компонент, нумерации страниц
-          <Pagination initialProductData={initialProductData} />
-        )}
-      </section>
+      {errorOccurred === true ? (
+        <>
+          <MainTitle
+            titleName='Sorry error oops....'
+            styleName={'title-item-error'}
+          />
+          <Error />
+        </>
+      ) : (
+        <>
+          <MainTitle titleName='Товары' />
+          <section className='product-gallery'>
+            {isLoading === true
+              ? arrayForSkeleton.map((item, index) => {
+                  // компонент, заглушки карточек товаров
+                  return <ProductCardSkeleton key={index} />;
+                })
+              : productsCards.map((obj) => {
+                  // компонент, карточки товаров
+                  return <ProductCard key={obj.id} {...obj} />;
+                })}
+          </section>
+          <section
+            className={
+              searchValue.trim().length === 0 && filteringId === 0
+                ? 'pagination'
+                : `${'pagination'} ${'not-visible-element'}`
+            }
+          >
+            {isLoading === true ? (
+              // компонент, заглушка нумерации страниц
+              <PaginationSkeleton />
+            ) : (
+              // компонент, нумерации страниц
+              <Pagination initialProductData={initialProductData} />
+            )}
+          </section>
+        </>
+      )}
     </>
   );
 }

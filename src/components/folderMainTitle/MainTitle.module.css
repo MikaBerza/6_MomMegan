@@ -6,3 +6,7 @@
   padding: 40px 0;
   color: var(--gray4);
 }
+
+.title-item-error {
+  color: var(--tomato-color);
+}
