@@ -10,13 +10,15 @@ import ProductCard from '../folderProductCard/ProductCard';
 import ProductCardSkeleton from '../folderProductCard/ProductCardSkeleton';
 import Pagination from '../folderPagination/Pagination';
 import PaginationSkeleton from '../folderPagination/PaginationSkeleton';
-import Error from '../folderErr/Error';
+import InsteadProduct from '../folderInsteadProduct/InsteadProduct';
 
 import {
   getSortedAndFilteredData,
   getArrayFragment,
   getFilteredDataByEnteredValues,
 } from '../../modules/modules';
+
+import errorsImg from '../../assets/img/Errors.png';
 
 function HomePage() {
   /* используем хук useSelector из библиотеки Redux 
@@ -120,7 +122,7 @@ function HomePage() {
             titleName='Sorry error oops....'
             styleName={'title-item-error'}
           />
-          <Error />
+          <InsteadProduct img={errorsImg} />
         </>
       ) : (
         <>
