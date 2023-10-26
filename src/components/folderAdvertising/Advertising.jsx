@@ -1,23 +1,22 @@
 import React from 'react';
+
+import megaSale50 from '../../assets/img/advertising/block_1/mega_sale_50.png';
+import megaSale80 from '../../assets/img/advertising/block_1/mega_sale_80.png';
+import peopleLeft1 from '../../assets/img/advertising/block_2_1/people_2_1.png';
+import peopleLeft2 from '../../assets/img/advertising/block_2_1/people_2_1_1.png';
+import peopleRight1 from '../../assets/img/advertising/block_2_2/people_2_2.png';
+import peopleRight2 from '../../assets/img/advertising/block_2_2/people_2_2_1.png';
+
 import style from '../folderAdvertising/advertising.module.css';
 
-function Advertising({ imgAdvertisingPaths }) {
+function Advertising() {
   const [currentIndex1, setCurrentIndex1] = React.useState(0);
   const [currentIndex2, setCurrentIndex2] = React.useState(0);
   const [currentIndex3, setCurrentIndex3] = React.useState(0);
   // массив путей к изображениям
-  const arrayPathsToImgMegaSale = [
-    imgAdvertisingPaths[0],
-    imgAdvertisingPaths[1],
-  ];
-  const arrayPathsPeopleLeft = [
-    imgAdvertisingPaths[2],
-    imgAdvertisingPaths[3]
-  ];
-  const arrayPathsPeopleRight = [
-    imgAdvertisingPaths[4],
-    imgAdvertisingPaths[5],
-  ];
+  const arrayPathsToImgMegaSale = [megaSale80, megaSale50];
+  const arrayPathsPeopleLeft = [peopleLeft1, peopleLeft2];
+  const arrayPathsPeopleRight = [peopleRight1, peopleRight2];
 
   React.useEffect(() => {
     const interval_1 = setInterval(() => {

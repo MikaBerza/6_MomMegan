@@ -21,13 +21,6 @@ import {
 
 import errorsImg from '../../assets/img/Errors.png';
 
-import megaSale50 from '../../assets/img/advertising/block_1/mega_sale_50.png';
-import megaSale80 from '../../assets/img/advertising/block_1/mega_sale_80.png';
-import peopleLeft1 from '../../assets/img/advertising/block_2_1/people_2_1.png';
-import peopleLeft2 from '../../assets/img/advertising/block_2_1/people_2_1_1.png';
-import peopleRight1 from '../../assets/img/advertising/block_2_2/people_2_2.png';
-import peopleRight2 from '../../assets/img/advertising/block_2_2/people_2_2_1.png';
-
 function HomePage() {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (filteringId, sortId, searchValue) из состояния,
@@ -46,18 +39,7 @@ function HomePage() {
   const [errorOccurred, setErrorOccurred] = React.useState(false);
   // создадим массив для отображения скелетона (он будет заполнен undefined)
   const arrayForSkeleton = [...new Array(numberOfCardsPerPage)];
-  // формируем массив с путями изображений для рекламы
-  const imgAdvertisingPaths = React.useMemo(
-    () => [
-      megaSale80,
-      megaSale50,
-      peopleLeft1,
-      peopleLeft2,
-      peopleRight1,
-      peopleRight2,
-    ],
-    []
-  );
+
   /* Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !
   Подробнее:
   Когда компонент первоначально монтируется, `useEffect()` запускает асинхронный вызов `fetch()'
@@ -127,7 +109,7 @@ function HomePage() {
 
   return (
     <>
-      <Advertising imgAdvertisingPaths={imgAdvertisingPaths} />
+      <Advertising />
       <Search />
       <section className='filtering-and-sorting'>
         <Filtering valueId={filteringId} />
