@@ -13,14 +13,18 @@ function convertAnArrayOfElementsToAnArrayWithIndexes(arr) {
   }, arr);
   return newArr;
 }
-// функция, получить отсортированный массив по (алфавиту(title), цене(price), популярности(rating))
+// функция, получить отсортированный массив по (алфавиту(title), цене убыванию/возрастанию(price), популярности(rating))
 export function getSortedData(productData, sortingNumber) {
   // Создаем копию исходного массива
   const copyDataArray = [...productData];
 
   // запишем в константы индексы элементов из списка сортировки
   const rating = listOfNamesOfSortingElements.indexOf('популярности');
-  const price = listOfNamesOfSortingElements.indexOf('цене');
+  const priceDescending =
+    listOfNamesOfSortingElements.indexOf('убыванию цены');
+  const priceAscending = listOfNamesOfSortingElements.indexOf(
+    'возрастанию цены'
+  );
   const alphabet = listOfNamesOfSortingElements.indexOf('алфавиту');
 
   // Выбираем метод сортировки в зависимости от sortingNumber, а пока
@@ -30,9 +34,12 @@ export function getSortedData(productData, sortingNumber) {
     // Для правильной сортировки слов по русскому алфавиту используем метод localeCompare()
     // с использованием правил локали для англ.яз "en"
     sortFunction = (a, b) => a['title'].localeCompare(b['title'], 'en');
-  } else if (sortingNumber === price) {
+  } else if (sortingNumber === priceAscending) {
     // Для сортировки по числовым свойствам (price)
     sortFunction = (a, b) => a['price'] - b['price'];
+  } else if (sortingNumber === priceDescending) {
+    // Для сортировки по числовым свойствам (price)
+    sortFunction = (a, b) => b['price'] - a['price'];
   } else if (sortingNumber === rating) {
     // Для сортировки по числовым свойствам (rating)
     sortFunction = (a, b) => b['rating'] - a['rating'];
