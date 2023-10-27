@@ -1,12 +1,8 @@
 .wrapper {
-  padding: 40px 0;
-}
-
-.copyright {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
-  height: 30px;
+  margin: 40px 0;
   font-size: 16px;
   font-weight: 600;
   opacity: 0.8;
@@ -14,27 +10,32 @@
   background-color: var(--light-gray1);
 }
 
-.link {
+.text {
   display: flex;
   align-items: center;
-  color: var(--dark-gray4);
+}
+
+.text-link {
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid transparent;
   transition: border-bottom 1s ease;
 }
 
-.link-logo {
+.logo-link {
   display: block;
+  align-items: center;
   margin-left: 5px;
 }
 
-.link path {
+.text-link path {
   transition: fill 1s ease;
 }
 
-.link:hover {
+.text-link:hover {
   border-bottom: 1px solid red;
 }
 
-.link:hover path {
+.text-link:hover path {
   fill: red;
 }
