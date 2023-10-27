@@ -51,8 +51,6 @@ function Advertising() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log('Перерисовка');
-
   return (
     <div className={style['wrapper']}>
       <img
