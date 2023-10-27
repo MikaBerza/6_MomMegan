@@ -19,6 +19,7 @@ import Header from './components/folderHeader/Header';
 import HomePage from './components/pages/HomePage';
 import CartPage from './components/pages/CartPage';
 import NotFoundPage from './components/pages/NotFoundPage';
+import Footer from './components/folderFooter/Footer';
 
 import {
   checkLocalStorageForNull,
@@ -111,14 +112,17 @@ function App() {
   ]);
 
   return (
-    <div className='wrapper'>
-      <Header />
-      <Routes>
-        <Route path='/HomePage' element={<HomePage />} />
-        <Route path='/CartPage' element={<CartPage />} />
-        <Route path='*' element={<NotFoundPage />} />
-      </Routes>
-    </div>
+    <>
+      <div className='wrapper'>
+        <Header />
+        <Routes>
+          <Route path='/HomePage' element={<HomePage />} />
+          <Route path='/CartPage' element={<CartPage />} />
+          <Route path='*' element={<NotFoundPage />} />
+        </Routes>
+      </div>
+      <Footer />
+    </>
   );
 }
 
