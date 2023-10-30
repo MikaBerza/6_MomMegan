@@ -1,6 +1,6 @@
 import React from 'react';
-//
 import style from '../folderFooter/footer.module.css';
+
 function Footer() {
   return (
     <footer className={style['wrapper']}>

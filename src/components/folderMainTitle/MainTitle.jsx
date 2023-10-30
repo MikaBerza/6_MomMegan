@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './MainTitle.module.css';
-//
+
 function MainTitle({ titleName, styleName }) {
   return (
     <section className={style['title']}>

@@ -2,6 +2,14 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
+import {
+  getSortedAndFilteredData,
+  getArrayFragment,
+  getFilteredDataByEnteredValues,
+} from '../../modules/modules';
+
+import errorsImg from '../../assets/img/Errors.png';
+
 import Advertising from '../folderAdvertising/Advertising';
 import Sort from '../folderSort/Sort';
 import Filtering from '../folderFiltering/Filtering';
@@ -12,14 +20,6 @@ import ProductCardSkeleton from '../folderProductCard/ProductCardSkeleton';
 import Pagination from '../folderPagination/Pagination';
 import PaginationSkeleton from '../folderPagination/PaginationSkeleton';
 import InsteadProduct from '../folderInsteadProduct/InsteadProduct';
-
-import {
-  getSortedAndFilteredData,
-  getArrayFragment,
-  getFilteredDataByEnteredValues,
-} from '../../modules/modules';
-
-import errorsImg from '../../assets/img/Errors.png';
 
 function HomePage() {
   /* используем хук useSelector из библиотеки Redux 

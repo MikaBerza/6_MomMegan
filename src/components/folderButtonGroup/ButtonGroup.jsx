@@ -1,8 +1,9 @@
 import React from 'react';
-import Button from '../folderButton/Button';
-import style from './ButtonGroup.module.css';
 import { Link } from 'react-router-dom';
-//
+
+import style from './ButtonGroup.module.css';
+import Button from '../folderButton/Button';
+
 function ButtonGroup({ styleName }) {
   if (styleName === undefined) {
     styleName = '';

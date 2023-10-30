@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../folderButton/Button';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -8,9 +7,10 @@ import {
   setCartData,
 } from '../../redux/slices/cartOfProductsSlice';
 
-import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 import style from './ProductCard.module.css';
+import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 import { v4 as uuidv4 } from 'uuid';
+import Button from '../folderButton/Button';
 
 function ProductCard({ imageUrl, title, types, sizes, price, rating }) {
   const [activeType, setActiveType] = React.useState(0);

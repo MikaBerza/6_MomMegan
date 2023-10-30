@@ -3,9 +3,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSortId } from '../../redux/slices/sortingAndFilteringSlice';
 
+import style from './Sort.module.css';
 import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
 import { getSortedData } from '../../modules/modules';
-import style from './Sort.module.css';
 
 function Sort({ valueId, updateProductData, setUpdateProductData }) {
   const { searchValue } = useSelector(

@@ -1,16 +1,15 @@
 import React from 'react';
-import Button from '../folderButton/Button';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   setProductCounter,
   setPriceCounter,
   setCartData,
 } from '../../redux/slices/cartOfProductsSlice';
-import { useDispatch } from 'react-redux';
 
 import style from './CartCard.module.css';
 import { listOfSeasonTitles } from '../../assets/listsWithNames';
+import Button from '../folderButton/Button';
 
 function CartCard({ id, imageUrl, title, types, sizes, price }) {
   /* используем хук useSelector из библиотеки Redux 

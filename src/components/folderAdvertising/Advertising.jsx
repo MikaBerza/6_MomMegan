@@ -1,13 +1,13 @@
 import React from 'react';
 
+import style from '../folderAdvertising/advertising.module.css';
+
 import megaSale50 from '../../assets/img/advertising/block_1/mega_sale_50.png';
 import megaSale80 from '../../assets/img/advertising/block_1/mega_sale_80.png';
 import peopleLeft1 from '../../assets/img/advertising/block_2_1/people_2_1.png';
 import peopleLeft2 from '../../assets/img/advertising/block_2_1/people_2_1_1.png';
 import peopleRight1 from '../../assets/img/advertising/block_2_2/people_2_2.png';
 import peopleRight2 from '../../assets/img/advertising/block_2_2/people_2_2_1.png';
-
-import style from '../folderAdvertising/advertising.module.css';
 
 function Advertising() {
   const [currentIndex1, setCurrentIndex1] = React.useState(0);

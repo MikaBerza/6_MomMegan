@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 import style from './Pagination.module.css';
-//
+
 function PaginationSkeleton() {
   return (
     <nav className={style['page-navigation']}>

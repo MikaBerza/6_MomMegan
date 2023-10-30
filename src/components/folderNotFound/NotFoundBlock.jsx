@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './NotFoundBlock.module.css';
-//
+
 function NotFoundBlock() {
   return (
     <>

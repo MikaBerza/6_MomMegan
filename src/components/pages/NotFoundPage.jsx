@@ -1,5 +1,4 @@
 import React from 'react';
-//
 import NotFoundBlock from '../folderNotFound/NotFoundBlock';
 
 function NotFoundPage() {

@@ -1,9 +1,11 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import debounce from 'lodash.debounce';
 
+import { useSelector, useDispatch } from 'react-redux';
 import { setSearchValue } from '../../redux/slices/sortingAndFilteringSlice';
+
 import style from './Search.module.css';
+
+import debounce from 'lodash.debounce';
 
 function Search() {
   /* Используем хук useRef из библиотеки React для создания ссылки на DOM-элемент.

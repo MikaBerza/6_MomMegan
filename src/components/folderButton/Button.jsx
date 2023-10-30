@@ -1,14 +1,7 @@
 import React from 'react';
 import style from './Button.module.css';
-//
-function Button({ nameBtn, nameStyle, handleClick }) {
-  // const myObject = arguments[0];
-  /* Object.entries()-статический метод возвращает массив 
-  собственных перечислимых пар ключ-значение 
-  свойства данного объекта со строковым ключом */
-  // const myArray = Object.entries(myObject);
-  // console.log(myArray);
 
+function Button({ nameBtn, nameStyle, handleClick }) {
   return (
     <button
       className={`${style['button']} ${style[`${nameStyle[0]}`]}`}
