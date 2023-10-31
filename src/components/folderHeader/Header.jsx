@@ -17,7 +17,7 @@ function Header() {
   return (
     <header className={style['wrapper']}>
       <div className={style['label']}>
-        <Link className={style['label__link']} to='/HomePage'>
+        <Link className={style['label__link']} to='/6_MomMegan'>
           <div className={style['label__images']}>
             <img
               className={style['label__images-item']}
@@ -35,7 +35,10 @@ function Header() {
       </div>
 
       <div className={style['basket-button']}>
-        <Link to='/CartPage' className={style['basket-button__item']}>
+        <Link
+          to='/6_MomMegan/CartPage'
+          className={style['basket-button__item']}
+        >
           <span className={style['basket-button__price']}>
             {priceCounter.toLocaleString()}
           </span>
