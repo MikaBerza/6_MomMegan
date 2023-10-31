@@ -116,7 +116,7 @@ function App() {
       <div className='wrapper'>
         <Header />
         <Routes>
-          <Route path='/HomePage' element={<HomePage />} />
+          <Route exact path='/HomePage' element={<HomePage />} />
           <Route path='/CartPage' element={<CartPage />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
