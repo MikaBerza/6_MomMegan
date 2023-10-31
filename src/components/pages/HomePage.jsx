@@ -44,22 +44,33 @@ function HomePage() {
   Подробнее:
   Когда компонент первоначально монтируется, `useEffect()` запускает асинхронный вызов `fetch()'
   чтобы получить данные о пиццах из базы данных Firebase. Этот эффект будет запущен только 
-  один раз, так как зависимостей нет. */
+  один раз, так как зависимостей нет */
   React.useEffect(() => {
     setIsLoading(true);
+    // выполним запрос fetch() к указанному URL-адресу
     fetch('https://mommegan-c835e-default-rtdb.firebaseio.com/shoesData.json')
-      // преобразуем полученный ответа `response` в формате JSON
-      .then((response) => response.json())
-      // принимаем преобразованный объект JavaScript в качестве аргумента `initialProductData`.
+      // используем метод then() для обработки ответа от сервера
+      // если ответ не содержит ошибок (если !response.ok равно false), код выполняется дальше
+      .then((response) => {
+        // если ответ содержит ошибку, генерируется исключение с сообщением 'Network response was not ok'
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        // если ответ успешен, вызывается метод json() для преобразования ответа в формат JSON
+        return response.json();
+      })
+      // используется метод then() для обработки данных, полученных после преобразования
       .then((data) => {
         // вызываем функцию `setInitialProductData()` в нееи устанавливаем значение `data` в состояние компонента
         setInitialProductData(data);
       })
-      // ловим ошибки, возникающие при выполнении fetch-запроса
+      // если происходит ошибка, выводим в консоль и устанавливается значение переменной 'setErrorOccurred(true)'
       .catch((err) => {
         console.log(err, 'err');
         setErrorOccurred(true);
       })
+      // независимо, выполнен запрос успешно или произошла ошибка, в блоке finally()
+      // устанавливаем значение 'setIsLoading(false)' для завершения процесса загрузки данных
       .finally(() => {
         setIsLoading(false);
       });
