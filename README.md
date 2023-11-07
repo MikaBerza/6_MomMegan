@@ -1,3 +1,5 @@
+<h2>Продолжение проекта см.&#129488;<a href="https://github.com/MikaBerza/6_MomMeganTS" target="_blank">6_MomMeganTS</a></h2>
+
 #### :rocket:Запуск проекта
 
 1. Скачайте Архив(ZIP) "6_MomMegan";
